@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Electronics Production</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"></span><span class="title">Electronics Production</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="assignments.html">Assignments</a></li>
+							<li><a href="finalproject.html">Final Project</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" >
+						<div class="inner">
+							<ul><li>Make an in-circuit programmer by milling the PCB</li>
+                            <li>Optionally, trying other processes</li></ul>
+                            <hr>
+                           <h3>Introduction</h3>
+                            <p>This week Assignment was make an in-circuit programmer by milling the PCB.i,am very much intersted in electronics.This week we need to build our own ISP(In-system programming),also called in-circuit serial programming (ICSP).we are building an Progarmmer for RISC-(Reduced Instruction Set Computer)based Microcontrollers, it's a Poppular Architecture used in Controlers. i,also worked with Several RSIC systems like Arduino , MSP430... Arduino uno is a Poppular Development Board based Atmel-328P MicroController's  and it's comes with in-built Circuit Progarmmer. </p>
+                            <h4>What is ISP(In-system programming)..?</h4>
+                            <p>To program a chip, we will need a special programmer which reads commands from USB to drive the SPI lines to program the chip.SPI stands for Serial Peripheral Interface and is a way for microcontrollers to communicate with each other or with the outside world. It's also called 3-wire sometimes because it uses three wires to communicate.</p>
+                            <img src="images/week5/icsp001.gif">
+                            <ul>
+                                <li>VCC - Postive Voltage</li>
+                                <li>GND - Ground</li>
+                                <li>RST - Reset Pin</li>
+                                <li>MISO- Master In Slave Out</li>
+                                <li>MOSI- Master Out Slave In</li>
+                                <li>SCK - Serial Clock</li>
+                                
+                            </ul>
+                            <p>In here <b>MISO,MOSI</b>, and <b>SCK</b> are the most importent.</p>
+                            <p>In SPI system , there will a main Module act as a Master and some peripheral act as Slave.when master need to send some data/need to communicate with slaves ,the <b>MOSI</b> channel will be activate based on the <b>SCK</b>(Serial Clock),so the communication will happen in givin Clock time , all the slave will be act as a Input and Master act as Output so the Master can give Instruction  ,like  this if the slave need to communicate to the Master they can use <b>MISO</b> that's means the Master can be act as Input and Slaves will be act as Output ,therefore Slave can give Feedback to the Master . </p>
+                            
+                            <p>In this week we don't need to design any of the Circuit board , jut need to make our own FabISP verisons.</p>
+                      
+                            
+                            <h3>PCB Fabrication</h3>
+                            <p>We got all the PCB designes so no need to design one,after the design we need the Fabricate the PCB, there are Several methods.like PCB chemical etching ,Photoresist PCB laminates and PCB Machine Milling.</p>
+                            <p>In here we are using PCB Milling, milling is the process of removing areas of copper from a sheet of printed circuit board material to recreate the pads. We will be focusing on the Milling process.
+                            </p>
+                            <h4>machine Details</h4>
+                            <img src="images/week5/001.jpg" width="100%" height="100%"  >
+                            <p>In Our Lab We have the Modella MDX 20 to machine our PCB. Modella is a Desktop milling machine that is capable of milling wood, wax, MDX,and circuit board blanks. It is compatible with most of the 2D and 3D CAD softwares. It has a small bed which moves in the Y-axis, a Tool head which moves in the X-axis and the end effector which moves in the Z-axis. It supports many milling bits and is versatile. The machine itself has a tiny foot print and can be placed on a table.</p>
+                            <img src="images/week5/0046.jpg">
+                            <p>We use the fab modules to give commands to the Modella and run the cutting program.we need to set the X,Y and Z axis manually.take care in removing the milling cutters and correcting the zero setting.</p>
+                        
+                            <h3> How it's work (Modella MDX 20)....?</h3>
+                            
+                            <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/vguYDhPXW7ZTLj6iCf" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+                            
+                            <p>Modella is like an ordinary 3-Axis CNC machines, Each axis is driven by a stepper motor and the cutting program tells the machine where to go by giving coordinates by G.code to the machine in real time.</p>
+                            <p>The Fab Module software will convert .png image in to a we  series of tool paths, these tool paths are defined by their coordinates and G-code. The .png image is a black and white layout of the board, and the black portions will be milled and the white portion is where the copper will be left.</p>
+                            
+                            <p>We have two processes in making a PCB, The first one is milling the traces to get the circuit board pattern, and the second is cutting out the board from the base copper clad.</p>
+                            <p>For milling traces, we use the 1/64th inch (0.4mm) bit and for cutting 1/32th (0.8mm) inch bit.i'll examplain all things one by one.</p>
+                            
+                            <h4>Circuit Schematic </h4>
+                            
+                            <p>I,am Using FabTiny ISP Documentaion and Source file by Brian Mayton and we can get all the resource here.<a herf="http://fabacademy.org/2018/docs/FabAcademy-Tutorials/week4_electronic_production/fabtinyisp_english.html">FabTinyISP</a></p>
+                            <img src="images/week5/002.png" height="500">
+                            <p>We are using Attiny 45 , it's 8-bit AVR Micorcontroller From Atmel (Now Microchip).</p>
+                            <img src="images/week5/003.png" height="250">
+                            <p>It's have 8-Pins , and we can use the 5-Pins for our purpose.Acutally we are turnig the microcontroller into a micocontroller Progarmmer by using the Firmware and Circuit.</p>  
+                            
+                            <p>The Altium source files are available <a href="http://fabacademy.org/2018/docs/FabAcademy-Tutorials/week4_electronic_production/fabtinyisp/fts_altium.zip">Here</a> if you want to modify the design. 
+                            
+                            <h4>Setting up the machine</h4>
+                            <ol>
+                            <li>First Make sure to use some <b>Sacrificial</b> material on top of the bare metal base , it will prevent the damage of  bit or the machine’s table.</li>
+                            <img src="images/week5/006.jpg" height="400">
+                            <li>Check the Drilling bit's , first we need mill the trace then cut,and make sure to use the correct bit.when we start to mill trace check the bit because the previous person will cut his board with cutting bit and that will be the default when we start to work.</li>
+                            <li>Fix the PCB on top of the Sacrificial layer, better to use a double sided tape</li>
+                            <img src="images/week5/007.jpg" height="300">
+                            <li>For tighten the bit ,first click view then the table should come out and the head will move to the far right,now load the bit you want to use, for milling traces, we use the <b>1/64th</b> inch bit and for cutting <b>1/32th</b> inch bit. Now insert the bit and use the Allen key to tighten the screw. Make sure it is tight on both sides. </li>
+                            <img src="images/week5/008.jpg" height="300">
+                            <li>For Move the (0,0) Position click the View mode again.</li>
+                            <li>Now Set the X'axis and Y'axis for by clicking on <b>move to Xmin and Ymin</b> on the Fab Module.</li>
+                            <li>Set Z'axis by using <b>Up</b> and <b>Down</b> on the Control panel </li>
+                            <li>Before starting Milling check your speed and depth settings and the tool position on the fab modules window. </li>
+                            
+
+                            </ol>
+                            <h4>PCB Fabrication</h4>
+                            <p>First Download the Milling and Cutting Schematics here</p>
+                            <ol>
+                            <li><a herf="http://fabacademy.org/2018/docs/FabAcademy-Tutorials/week4_electronic_production/fabtinyisp/fts_mini_traces.png">Traces</a></li>
+                                <img src="images/week5/004.png"   height="300"> 
+                            <li><a herf="http://fabacademy.org/2018/docs/FabAcademy-Tutorials/week4_electronic_production/fabtinyisp/fts_mini_cut.png">Outline Cutout</a></li>
+                            <img src="images/week5/005.png"  height="300" ></ol>
+                            
+                            <p> We are using <b>FR-1</b> Grade PCB. </p>
+                            <img src="images/week5/0014.jpg" height="400">
+                            
+                         <p>open <b>Fab Modules</b> by typing <code>fab</code> on linux terminal or you can use the online version.</p>
+                        <p>In Fab Module Select <b>Image(.png)</b> as Input and <b>Roland MDX-20 mill(rml)</b> as ouput Process and Click <b>make_png_rml</b> .</p>
+                        <img src="images/week5/009.png" height="200">
+                        <p>Now Fab Module will open a  new window, and here we need to image for milling by clicking <b>load.png</b>, and don't forget to select the <b>mill trace (1/64)</b> for milling and click the <b>make.path</b> to create path for milling. </p>
+                        <img src="images/week5/0010.png" height="500">
+                        <p>Now set the 'X'axis and 'Y'axis </p>
+                        <p>First clik the <b>View</b> button on the Modela Control panel.</p>
+                        
+                            <iframe src="https://giphy.com/embed/1AdZgc5HgWmcNj637V" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            <p>Now change the bit ,For milling we use <b>1/64</b> bit.</p>
+                            <img src="images/week5/0015.jpg" height="400"> <br>
+                            <iframe src="https://giphy.com/embed/2zZlPjbnyCYcEEYOlQ" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            <p>After tighten the bit,  click the <b>View</b> button to get back to Home position.</p>
+                            <iframe src="https://giphy.com/embed/1YjoCFA4Jt1o8Q6xIL" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            <p>Now set the Correct X and Y axis based on our PCB board Position.</p>
+                            <p>For setting Z'axis ,set the x and y then by using <b>UP</b> and <b>Down</b> button just stop the nearby the PCB and then losen the 'Bit' and tight it when it's touch the PCB , that's all we now set the Z axis. </p>
+                            <p>Don't forget the X and Y axis.if we face any issue like power failure of application forzen we can't start it same postion without the X and Y axis. </p>
+                            
+                            <p>Now Click <b>Make.rml</b> to genrate instruction after that <b>Send it!</b> to start Milling.</p>
+                            <iframe src="https://giphy.com/embed/4EFqZyy4xbS4fZQQjF" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            <p>Now we successfully milled the Trace</p>
+                            <img src="images/week5/0012.jpg" height="400">
+                            <p>Next Cut the Trace, First change the Bit,For Cutting we use <b>1/32</b></p>
+                            <img src="images/week5/0013.jpg" height="400">
+                            <p>so first load the Image in <b>Fab Module</b> and make the path after that send it to machine to cutting </p>
+                            <img src="images/week5/0016.png" height="500">
+                            <p>make sure to set the bit as the <b>cut board(1/32)</b> and do the same that we did for milling , <b>make.path</b> and <b>make.rml</b> and start process by clicking <b>Send it!</b></p>
+                            <img src="images/week5/0017.jpg" height="300">
+                            <p>We successfully completed cuting .</p>
+                            <img src="images/week5/0018.jpg" height="300">
+                            <p>here our PCB</p>
+                            <hr>
+                            
+                            <h4>Soldering</h4>
+                            <p>I have Some exerience in Through hole soldering , but here we are going to handle <b>SMD</b> (Surface Mount Devices) components.</p>
+                            <p>First i Collected all the component that we need to build our ISP </p>
+                            <ul>
+                            <li>1x ATtiny45 or ATtiny85</li>
+                            <li>2x 1kΩ resistors</li>
+                            <li>2x 499Ω resistors</li>
+                            <li>2x 49Ω resistors</li>
+                            <li>2x 3.3v zener diodes</li>
+                            <li>1x red LED</li>
+                            <li>1x green LED</li>
+                            <li>1x 100nF capacitor</li>
+                            <li>1x 2x3 pin header</li></ul>
+                            <img src="images/week5/0019.jpg" height="400">
+                            <p>I placed Placed PCB on a Double tape Insulation before soldering.and each componets soldering i checked continuity using multimeter to ensure componet is successfull solderd.</p>
+                            <img src="images/week5/0020.jpg" height="600">
+                            <p>Successfull Soldered all the Componets </p>
+                            <img src="images/week5/0021.jpg" height="400">
+                             <p>we need to short the jumber for Progarmming the ISP</p>
+                            <img src="images/week5/0039.jpg" height="300">
+                            <hr>
+                            
+                            <h4>Flashing Firmware </h4>
+                            <p>Next step is to flash/load the Firmware into the board.First Download the firmware <a href="https://github.com/Academany/FabAcademany-Resources/blob/master/files/firmware_45.zip">here</a></p>
+                            <p>I using Linux , so first we need to install avr-gcc tool-chain, type this on terminal to install tool-chian</p> <code>sudo apt-get install avrdude gcc-avr avr-libc make</code> 
+                            <p>After Installtion unzip the downloaded firmware and open terminal there.</p>
+                            <img src="images/week5/0022.png" height="150">
+                            <p>Now we can see the files , next we need to open the <b>Makefile</b> for ensuring it's configured for the <b>ATTiny</b>.i used <b>nano</b> to open the file , <br>just type <code>nano Makefile</code> .</p>
+                            <img src="images/week5/0023.png" height="500">
+                            <p>Now we can confirm that, it's configured for the <b>ATTiny</b></p>
+                            <p>Before falshing make sure we are shorted the Progarmming Jumber on our PCB. and also make a Connector for ISP header,</p>
+                            <img src="images/week5/0024.jpg" height="300">
+                            <p>We need another Progarmmer for Progarmme the ISP Progarmmer , i used a previous student ISP to flash my ISP firmware.</p>
+                            <img src="images/week5/0025.jpg" height="400">
+                            <p>Now we are ready to flash.</p>
+                            <p>In terminal (at the firmware file path) type <code>Make</code> to Genarate the <b>hex</b> for flashing.</p>
+                            <img src="images/week5/0026.png" height="110">
+                            <p>Now we can see some new files,that was automatically genarated <b>make</b> file script.</p>
+                            <p>Now Connect the Old ISP and connect to our new ISP. and check the new ISP was detected in Computer by Typing <code>lsusb</code></p>
+                            <img src="images/week5/0027.png" height="500">
+                            <p>Now we are ready to flash. </p>
+                            <p>Type <code>make flash </code> to flash the firmware to new ISP.</p>
+                            <img src="images/week5/0028.png" height="600">
+                            <p>Now we are successfull flased.</p>
+                            <p>We need activate the <b>fuse</b> in order to act our ISP as a progarmmer.For activating fuse <code>make fuse</code> it will automatically , activate the fuse.</p>
+                            <p>After the Flashig we need to remove the jumber </p>
+                            <img src="images/week5/0029.jpg" height="200">
+                            <p>Removing the jumber is not mandatory, we can also do that by commad , <code>make rstdisbl</code> , it will actually disable the reset pin internally , once we done that we can't progarmmer the ISP board with new firmware.  </p>
+                            <img src="images/week5/0030.png" height="650">
+                            <p>Now we have the ISP Board </p>
+                            <img src="images/week5/0031.jpg" height="500">
+                            <p>I secure the ISP by applying some hot-glue as top layer. </p>
+                            <img src="images/week5/0032.jpg" height="500">
+                            <h4>Testing</h4>
+                            <p>We need to test our New ISP is detected by the Computer or not</p>
+                            <p>In here i successfull flashed , but after the flash PC can't detect the ISP , i tried lot of times , keep flshing.one of my fried  was successful detected by the commputer , so i did some inspection and found that i used wrong resistor so changed and it's worked.becasue the 49 ohm resistor used as Resistance to data lines, so 49k it's huge one so it can't communicate to other head.Problem was i used the resistor 49k ohm insted of the 49 ohm .</p>
+                            <img src="images/week5/0036.jpg" height="400" >
+                            <p>In here you can see i wrong resistor .used 49k ohm insted of 49 ohm there a 1000 more ohms, so i just replaced it with Solder wick.</p>
+                            <img src="images/week5/0038.jpg" height="400">
+                            <p>Desoldered the <b>49k ohm</b> resistor and soldered <b>49 ohm</b> resistor. </p>
+                            <img src="images/week5/0037.jpg" height="500">
+                            <p>Now you can see the resistor changed <b>4992</b> to <b>49A9</b>.</p>
+                            
+                            <p>After i tested with linux machine</p>
+                            <img src="images/week5/0034.png" height="600">
+                            
+                            <h4>Hero shots</h4>
+                            <img src="images/week5/0033.jpg" height="100%" width="100%z`"><br><br>
+                           
+                            <h4>Group Assignment</h4>
+                            <p>This Week we need characterize the specifications of our PCB production process i exaplined all procedure on the PCB Production section so next one is to find-out the how much resolution of 1/64 and 1/100 bit can mill and find out the difference. </p>
+                            <img src="images/week5/0035.png" height="300">
+                            <p>This is our test pad , so let's mill it.first i tried with <b>1/64</b> bit , </p>
+                            <img src="images/week5/0043.png" height="600"> <br> <br>
+                            <img src="images/week5/0040.jpg" height="500">
+                            <p>you can see here some copper part is not milled correctly,because i used <b>offset</b> as <b>4</b> </p>
+                            <img src="images/week5/0044.png" height="600">
+                            <p>Now i used <b>offset</b> as <b>-1</b> , now you can see the the <b>to.path</b> section now it's filled completed.</p>
+                            <img src="images/week5/0041.jpg" height="500">
+                            <p>Now we got perfect one, there is no extra copper in this board , we can clearly see <b>1/64</b> only milled <b>0.20</b>, and all other it's just passed.</p> <br><br>
+                            
+                            <p>So , next i tried with <b>1/32</b></p>
+                            <img src="images/week5/0045.png" height="600">
+                            <p>and milled it.</p>
+                            <img src="images/week5/0042.jpg" height="500">
+                            <p>We can clearly see ,all this messed up with <b>1/32</b> . This images shows cleary the milling resolution of <b>1/64</b> and <b>1/32</b> bit .</p>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        <br><br><br>    
+                        <center><h3><a href="week4.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week6.html" align="right">Next&gt;  </a></h3></center>
+						</div>
+					</div>
+                
+                
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="https://www.github.com/salmanfarisvp" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:farissalmannbr@gmail.com" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+        
+        
+        
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

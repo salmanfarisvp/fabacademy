@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Input Devices</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"></span><span class="title">Input Devices</span>
+                                    
+								</a>
+                            
+                            
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="assignments.html">Assignments</a></li>
+							<li><a href="finalproject.html">Final Project</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<ul><li>measure something: add a sensor to a microcontroller board that you have designed and read it.</li>
+                            <li>measure the analog levels and digital signals in an input device.</li></ul>
+                            <hr>
+                            
+                            <h3>Introduction</h3>
+                            <p>In computing, an input device is a piece of computer hardware equipment used to provide data and control signals to an information processing system such as a computer or information appliance. Examples of input devices include keyboards, mouse, scanners, digital cameras and joysticks.(Source :- <a herf="https://en.wikipedia.org/wiki/Input_device">https://en.wikipedia.org/wiki/Input_device</a> <br>
+                            In this week we need to design a PCB with a Sensor and Vishualize the data to a computer.So in my <a href="finalproject.html"><b>Planet Bin (final project)</b></a> PCB i need a sensor to monitor waste level in a Waste bin , so choosed Ultrasonic sensor . </p>
+                            <img src="images/week11/001.png" ><br>
+                            <p>In here our waste level sensing sensor is <b>Ultrasonic sensor</b> actually it's measure the distance using the ultra sound ,so based the distance we can measure the waste level .so here i am using a Ultrasonic sensor Module <b>HCSR04.</b> from my Personal Inventory for my application</p>
+                            
+                            <h3>Ultrasonic Sensor-(HC-SR04)</h3>
+                            <img src="images/week11/002.jpg">
+                            <p>The HC-SR04 ultrasonic sensor module uses sonar sound  to determine distance to an object like bats do. It offers excellent non-contact range detection with high accuracy and stable readings in an easy-to-use package. From 2cm to 400 cm or 1” to 13 feet. Its operation is not affected by sunlight or black material like sharp rangefinders are (although acoustically soft materials like cloth can be difficult to detect). It comes complete with ultrasonic transmitter and receiver module.</p>
+                            
+                            <p><b>Pins</b></p><ul>
+                            <li>VCC: +5VDC</li>
+                            <li>Trig : Trigger (INPUT)</li>
+                            <li>Echo: Echo (OUTPUT)</li>
+                            <li>GND: GND</li>
+                            </ul>
+                            
+                            <p><b>Features</b></p>
+                            <ul>
+                            <li>Power Supply :+5V DC</li>
+                            <li>Quiescent Current : 2mA</li>
+                            <li>Working Current: 15mA</li>
+                            <li>Operating Frequency : 40KHZ</li>
+                            <li>Effectual Angle: 15°</li>
+                            <li>Ranging Distance : 2cm – 400 cm/1″ – 13ft</li>
+                            <li>Resolution : 0.3 cm</li>
+                            <li>Measuring Angle: 30 degree</li>
+                            <li>Trigger Input Pulse width: 10uS</li>
+                            <li>Dimension: 45mm x 20mm x 15mm</li>
+                            </ul>
+                            <p>datasheet :- <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf">https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf</a></p>
+                            
+                            <p><b>How Does it Work?</b></p>
+                            <p>The ultrasonic sensor uses sonar to determine the distance to an object. Here’s what happens:</p>
+                            <ol>
+                            <li>the transmitter (trig pin) sends a signal: a high-frequency sound</li>
+                            <li>when the signal finds an object, it is reflected and</li>
+                            <li>the transmitter (echo pin) receives it.</li></ol>
+                            <img src="images/week11/003.jpg">
+                            <p>The time between the transmission and reception of the signal allows us to know the distance to an object. This is possible because we know the sound’s velocity in the air . (Source :- <a href="https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/">https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/</a></p>
+                            
+                            <h3>PCB Design</h3>
+                            <p>I started Design with <b>ATtiny44</b> with Autodesk EAGLE. i learned PCB design in <a href="week7.html">ELECTRONICS DESIGN week-7</a> you can refer that to learn the design also added a <b>10 k Thermistor</b> .for this circuit i did't used external clock because my application will run smoothly on internal <b>8 mhz</b> clock.</p>
+                            
+                            <img src="images/week11/004.png" width="100%"><br><br>
+     
+                            <p><b>Components</b></p>
+                            <ul>
+                            <li>ATtiny44</li>
+                            <li>HCSR04 Ultrasonic Sensor</li>
+                            <li>Thermistor 10k</li>
+                            <li>Resistor 10k</li>
+                            <li>ISP Header pin 2x1</li>
+                            <li>FTDI Header pin 6x1</li></ul>
+                            
+                            
+                            <p>First I changed <b>Design rules</b> in Eagle.</p>
+                            <h4>PCB Designing Rules</h4>
+                            <p>Before routing the board, the most important step you have to do is set the Design rules. The design rules relate to the trace width, the clearance between the traces etc. you can open Design rules from the toolbar => <b>Edit</b>  => <b>Designing rules </b></p>
+                            <img src="images/week7/0029.png" height="500">
+                            <p>Open the designing rules.</p>
+                            <img src="images/week7/0030.png">
+                            <p>First we need to set the <b>Clearnce </b>, in default it' comes with the <b>6 mil</b> in here fab we are using <b>1/64 </b> bit for milling so here the trace will come around <b>16 mill</b>.</p>
+                            <img src="images/week7/0031.png">
+                            <p>Next we need to take care the <b>Distance</b> ,it default value is <b>40 mil</b> so in here i set the value to corresponding to our bit that is <b>16 mil</b>.</p>
+                            <img src="images/week7/0032.png">
+                            <img src="images/week7/0033.png">
+                            <p>Next we need to set the Size of the Copper Trace , in dafult <b>6mil</b>, and we need to make it <b>16 mil</b>.</p>
+                            <img src="images/week7/0034.png">
+							<img src="images/week7/0050.png"><br><br>
+							
+							<p>I used Autoroute Function in egale.</p>
+							<img src="images/week11/007.jpg"><br><br>
+							<p>I Selected the one of the best auto routed solution .</p>
+                            <img src="images/week11/0051.jpg" height="500" >
+                            <p>but i found two error .so i just solve that by <b>Deleting the auto routed path</b> and <b>manually routed</b>  my self.  </p>
+							<img src="images/week11/0061.jpg" height="500">
+							<p>Here is the Final route.</p>
+							<img src="images/week11/008.png" height="600"><br><br>
+							<p>I exported <b>Mill</b> , <b>drill</b> and <b>Cut</b> images and Monochrome. </p>
+							<img src="images/week11/009.png" height="500"> <img src="images/week11/0010.png" height="500">
+							<p>In here <b>Ultrasonic</b> module is a Through-hole componet so we need to drill a holes.</p>
+							<img src="images/week11/0011.png" height="500">
+							<p>In our Model it will remove the copper forom the copper so I used <B>GIMP</B> to invert my image to make it compatable with drill.</p>
+							<img src="images/week11/0012.png" height="500">
+							<p>this is how it's look for drill.</p>
+
+							<h4>PCB Milling</h4>
+							<p>I explaind about the PCB milling procedure in the <a href="week5.html"><b>Week5 :- Electronics Production</b></a> . same as here , am using Modela MDX for milling the PCB.</p>
+							<img src="images/week11/0013.png" height="500"><br><br>
+							<p>I used the <b>Fab Modules</b> with Modela to mill PCB.for milling i used 1/64 bit.Fab Module is very easy and simple UI compared to new Fab Mods , so choosed the Module.</p>
+							<img src="images/week7/0067.jpg" height="500">
+                            <p>I used single sided <b>FR-grade</b> PCB .</p>
+                            <img src="images/week7/0068.jpg" height="600">
+							<p>Milling Started </p>
+							<img src="images/week11/0014.jpg" height="600">
+							<p>Next i need to cut out the Trace , for cutting the trace i used <b>1/32 bit</b>.</p>
+							<img src="images/week7/0065.png" width="100%"><br>
+							<p>Cuting and Drilling is a fast process compared to milling</p>
+							<img src="images/week11/0017.jpg" height="600"><br><br>
+
+							<h4>Soldering</h4>
+							<img src="images/week11/0016.jpg" height="600">
+                            <p><b>Components</b></p>
+                            <img src="images/week11/0020.jpg" height="500">
+                            <ul><li>ATtiny44</li>
+                            <li>HCSR04 Ultrasonic Sensor</li>
+                            <li>Thermistor 10k</li>
+                            <li>Resistor 10k</li>
+                            <li>ISP Header pin 2x1</li>
+                            <li>FTDI Header pin 6x1</li></ul>
+							<p>First i soldered <b>ATtiny44</b> Microcontoller.</p>
+							<img src="images/week11/0015.jpg" height="600">
+							<p>Then soldered one by one.</p>
+							<img src="images/week11/0018.jpg" width="50%"><br><br>
+							<h4>HERO SHOT</h4>
+							<img src="images/week11/0019.jpg" width="100%"><br><br><br>
+                            
+                            <h4>Programming</h4>
+                            <p>I used Arduino IDE and Arduino Bootloader to develope the Firmware .first i burned <b>Arduino Bootloader</b> by using <b>FabISP</b> </p>
+                            <img src="images/week11/0021.png" height="500">
+                            <p>First I tried to measure <b>Distance</b> .</p>
+                            
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Author :- Salman Faris</font>
+<font color="#95a5a6"> * Date :- 11&#47;04&#47;2018</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> * Measure distance in CM using ultraSonic distance sensor with ATtiny44 &nbsp;</font>
+<font color="#95a5a6"> * Source :- </font><u><font color="#95a5a6">http:&#47;&#47;archive.fabacademy.org&#47;2018&#47;labs&#47;fablabkochi&#47;students&#47;salman-faris&#47;week11.html</font></u><font color="#95a5a6"></font>
+<font color="#95a5a6"> *&#47;</font>
+
+
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">trigPin</font> <font color="#000000">PA2</font> <font color="#434f54">&#47;&#47;Ultarsonic Trig Pin Connected to PA2</font>
+<font color="#5e6d03">#define</font> <font color="#000000">echoPin</font> <font color="#000000">PA1</font> <font color="#434f54">&#47;&#47;Ultarsonic Echo Pin Connected to PA1</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">RX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">9</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;TX pin of ATtiny44</font>
+<font color="#5e6d03">#define</font> <font color="#000000">TX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">10</font> &nbsp;<font color="#434f54">&#47;&#47;RX pin of ATtiny44</font>
+
+<b><font color="#d35400">SoftwareSerial</font></b> <font color="#000000">window</font><font color="#000000">(</font><font color="#000000">RX</font><font color="#434f54">,</font> <font color="#000000">TX</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;initialize &#39;window&#39; as Software Serial</font>
+ 
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;set trig pin as OUTPUT</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">echoPin</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;set echo pin as INPUT</font>
+ &nbsp;
+ &nbsp;<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;initialize software Serial in 9600 bit&#39;s per second</font>
+ &nbsp;
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+
+<font color="#00979c">long</font> <font color="#000000">duration</font><font color="#434f54">,</font> <font color="#000000">distance</font><font color="#000000">;</font>
+ 
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">duration</font> <font color="#434f54">=</font> <font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">echoPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">distance</font> <font color="#434f54">=</font> <font color="#000000">(</font><font color="#000000">duration</font><font color="#434f54">&#47;</font><font color="#000000">2</font><font color="#000000">)</font> <font color="#434f54">&#47;</font> <font color="#000000">29.1</font><font color="#000000">;</font> 
+
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Distance :&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">distance</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34; CM&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+
+</pre></code></pre>          
+                            
+                            <p>Click <b>Upload</b> to flash the code in to board.</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ieregz3apSs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            
+                            
+                            <p><b>OUTPUT</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/n2vrXvWcz5c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                            
+                            <img src="images/week11/0022.jpg"><br><br><br><hr>
+                            
+                            <h4>ATtiny45</h4>
+                            <p>After that i used <b>ATtiny45</b>  and also removed the <b>Thermistor</b> so the size is reduced about 50% .</p>
+                            <p><b>Schematic diagram</b></p>
+                            <img src="images/week11/0023.png" width="100%"><br><br><br>
+                            
+                            <p><b>Board</b></p>
+                            <img src="images/week11/0024.png" width="75%" ><br><br><br>
+                            
+                            <p><b>Final Result</b></p>
+                            <img src="images/week11/0025.jpg">
+                            
+                            <h4>Hero Shot</h4>
+                            <img src="images/week11/0026.jpg" width="100%"><br><br><br>
+                            
+                            <h4>Programming</h4>
+                            <pre>
+                            <code><pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Author :- Salman Faris</font>
+<font color="#95a5a6"> * Date :- 11&#47;04&#47;2018</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> * Measure distance in CM using ultraSonic distance sensor with ATtiny45 &nbsp;</font>
+<font color="#95a5a6"> * Source :- </font><u><font color="#95a5a6">http:&#47;&#47;archive.fabacademy.org&#47;2018&#47;labs&#47;fablabkochi&#47;students&#47;salman-faris&#47;week11.html</font></u><font color="#95a5a6"></font>
+<font color="#95a5a6"> * used 11 Cm glass for waste bin model</font>
+<font color="#95a5a6"> *&#47;</font>
+ 
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">trigPin</font> <font color="#000000">3</font> <font color="#434f54">&#47;&#47;Ultarsonic Trig Pin Connected to PA3</font>
+<font color="#5e6d03">#define</font> <font color="#000000">echoPin</font> <font color="#000000">4</font> <font color="#434f54">&#47;&#47;Ultarsonic Echo Pin Connected to PA4</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">RX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">1</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;TX pin of ATtiny44</font>
+<font color="#5e6d03">#define</font> <font color="#000000">TX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">0</font> &nbsp;<font color="#434f54">&#47;&#47;RX pin of ATtiny45</font>
+
+ <b><font color="#d35400">SoftwareSerial</font></b> <font color="#000000">window</font><font color="#000000">(</font><font color="#000000">RX</font><font color="#434f54">,</font> <font color="#000000">TX</font><font color="#000000">)</font><font color="#000000">;</font>
+ 
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> 
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">echoPin</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;
+ &nbsp;<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;
+<font color="#000000">}</font>
+ 
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<font color="#00979c">long</font> <font color="#000000">duration</font><font color="#434f54">,</font> <font color="#000000">distance</font><font color="#000000">;</font>
+ 
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;
+<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">trigPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">duration</font> <font color="#434f54">=</font> <font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">echoPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">distance</font> <font color="#434f54">=</font> <font color="#000000">(</font><font color="#000000">duration</font><font color="#434f54">&#47;</font><font color="#000000">2</font><font color="#000000">)</font> <font color="#434f54">&#47;</font> <font color="#000000">29.1</font><font color="#000000">;</font> 
+<font color="#00979c">int</font> <font color="#000000">wastelevel</font> <font color="#434f54">=</font> <font color="#000000">11</font> <font color="#434f54">-</font> <font color="#000000">distance</font> <font color="#000000">;</font> 
+
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Waste Level :- &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">wastelevel</font><font color="#000000">)</font><font color="#000000">;</font> 
+<font color="#000000">window</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font> <font color="#005c5f">&#34;%&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre></code></pre>
+                            
+                            <p><b>Model</b></p>
+                            <img src="images/week11/0027.jpg" height="700">
+                            <h4>Demo Video</h4>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z75R9RgpLI0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <hr>
+                            <h3>Joystick</h3>
+                            <p>Joystick Module can measure position co-ordinates on X and Y axis by moving the thumbstick on top. It also contains a tactile switch that can be triggered by pressing the thumbstick down</p>
+                            <img src="images/week11/0062.jpg" height="300">
+                            <p>This module produces an output of around 2.5V from X and Y when it is in resting position. Moving the joystick will cause the output to vary from 0v to 5V depending on its direction, we can expect to read a value of around 512 in its resting position (expect small variations due to tiny imprecisions of the springs and mechanism) When you move the joystick you should see the values change from 0 to 1023 depending on its position.</p>
+                            
+                            <p><b>Pinout</b></p>
+                            <img src="images/week11/0030.png">
+                            <p>In here <b>Groun</b>d is Connected to Ground and <b>5V</b> pin connected to Board 5V supply.<b>VRx</b> and <b>VRy</b> is connected to a analogPin , and <b>SW</b> is the switch pin so it can be connect a digital pin.</p>
+                            
+                            <p>Here is i used<b>MISO</b> pin for <b>VRX</b>, <b>MOSI</b> pin for <b>VRY</b> and <b>SCK</b> pin <b>SW</b>.</p>
+                            
+                            <h3>Code</h3>
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">int</font> <font color="#000000">xValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+<font color="#00979c">int</font> <font color="#000000">yValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+<font color="#00979c">int</font> <font color="#000000">bValue</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">Rx</font> <font color="#000000">3</font>
+<font color="#5e6d03">#define</font> <font color="#000000">Tx</font> <font color="#000000">2</font>
+
+<b><font color="#d35400">SoftwareSerial</font></b> <font color="#000000">myserial</font><font color="#000000">(</font><font color="#000000">Rx</font><font color="#434f54">,</font> <font color="#000000">Tx</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">6</font><font color="#434f54">,</font> <font color="#00979c">INPUT_PULLUP</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+
+ &nbsp;<font color="#000000">xValue</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">4</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">yValue</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">5</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+ &nbsp;<font color="#000000">bValue</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">6</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">xValue</font><font color="#434f54">,</font> <font color="#00979c">DEC</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;,&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">yValue</font><font color="#434f54">,</font> <font color="#00979c">DEC</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;,&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#434f54">!</font><font color="#000000">bValue</font><font color="#434f54">,</font> <font color="#00979c">DEC</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;\n&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre>
+                            </code></pre>
+                            
+                            <h3>demonstration video</h3>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/1xDcukCmv6Y?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            
+                            <hr><h4>Group Assignment</h4>
+                            <p>In the group Assignmnet we need measure the analog levels and digital signals in an input device and display in to the DSO.but in our lab we have <b>UniSource DS-1100</b> Digital Storage Oscilloscope but it doesn't have an ASCII text / binary decode function (datasheet :- <a href="http://www.testequipmentdepot.com/unisource/pdf/ds-1065_1100_1200_datasheet.pdf">http://www.testequipmentdepot.com/unisource/pdf/ds-1065_1100_1200_datasheet.pdf</a>) </p>
+                            
+                            
+                            
+                            <hr>
+                            <h4>Resource</h4>
+                            <p><b><a href="resource/week11.zip">Design File</a></b></p>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+
+
+
+
+
+                            
+       
+                            
+                        <br><br><br>  
+                        <center><h3><a href="week10.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week12.html" align="right">Next&gt;  </a></h3></center>
+						</div>
+					</div>
+                
+                
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="https://www.github.com/salmanfarisvp" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:farissalmannbr@gmail.com" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+        
+        
+        
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

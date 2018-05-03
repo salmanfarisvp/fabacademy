@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Embedded Programming</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"></span><span class="title">Embedded Programming</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="assignments.html">Assignments</a></li>
+							<li><a href="finalproject.html">Final Project</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" >
+						<div class="inner">
+							<ul><li>Read a microcontroller data sheet</li>
+                            <li>Program your board to do something</li>
+                            <li>Experiment with other architectures</li></ul>
+                            <hr>
+                            <h3>Introduction</h3>
+                            <p>This week we need to progarmme the Hello-echo board that we designed in the <a href="week7.html">Electronics Design</a> week.I have experience with the Arduino developement also i want to learn more pramming stacks so this is the best chance. in this week i wil progarmme the Echo-board with Arduino , C  and also Assembly and i will document my experience here . Thank you. </p>
+                            
+                            <h4>Embedded System</h4>
+                            <p>An embedded system is a dedicated computer system designed for one or two specific functions. This system is embedded as a part of a complete device system that includes hardware, such as electrical and mechanical components. The embedded system is unlike the general-purpose computer, which is engineered to manage a wide range of processing tasks.</p>
+                            
+                            <h4>Microprocessor VS Microcontrollers</h4>
+                            <p>Microprocessor is a central processing unit (CPU) on a single chip. but in Microcontrollers it consist of CPU,Memmory Unit (RAM , ROM )and I/O's .but Microcontrollers is extremely slow when comparing Microprocessor .   </p>
+                            <img src="images/week9/001.png">
+                            <p>In here we are Focusing on Microcontrollers .</p>
+                            
+                            <h4>Architectures</h4>
+                            <ul>
+                            <li><b>Harvard architecture</b></li>
+                            <p>The Harvard architecture is a computer architecture with physically separate storage and signal pathways for instructions and data.so it can simultaneously use both busses.</p>
+                            <li><b>Von Neumann architecture</b></li>
+                            <p>The design of a von Neumann architecture machine is simpler than that of a Harvard architecture machine, which is also a stored-program system but has one dedicated set of address and data buses for reading data from and writing data to memory, and another set of address and data buses for instruction fetching.</p>
+                                
+                            <p><b>Harvard architecture</b> has separate data and instruction busses, allowing transfers to be performed simultaneously on both busses. A <b>von Neumann architecture</b> has only one bus which is used for both data transfers and instruction fetches, and therefore data transfers and instruction fetches must be scheduled - they can not be performed at the same time.</p>
+                                
+                            <li><b>CISC</b></li>
+                            <p>A complex instruction set computer  processor has complex instructions that take up multiple clocks for execution. The average clock cycle per instruction (CPI) is in the range of 2 and 15.it's  Performance is optimized with more focus on hardware. also It has a memory unit to implement complex instructions.CISC mainly used in Microprocessor.</p>
+                            
+                            <li><b>RISC</b></li>
+                            <p>A reduced instruction set computer is a computer which only uses simple commands that can be divided into several instructions which achieve low-level operation within a single CLK cycle, as its name proposes “Reduced Instruction Set”.it's performance is optimized with more focus on software. RISC mainly Used in Microcontroller. </p>
+                    
+                            </ul>
+                            
+                            <h4>Microcontroller Architecture Family</h4>
+                            <ul>
+                            <li><b>PIC</b></li>
+                            <p>PIC(peripheral interface controller) is Initially this was developed for supporting PDP computers to control its peripheral devices, and therefore, named as a peripheral interface device. These microcontrollers are very fast and easy to execute a program compared with other microcontrollers. PIC Microcontroller architecture is based on <b>Harvard architecture</b>. PIC microcontrollers are very popular due to their ease of programming, wide availability, easy to interfacing with other peripherals, low cost, large user base and serial programming capability (reprogramming with flash memory),  etc.</p>
+                                
+                            <li><b>AVR</b></li>
+                            <p>AVR is a family of microcontrollers developed by Atmel.These are modified <b>Harvard architecture</b> 8-bit RISC single-chip microcontrollers. AVR was one of the first microcontroller families to use on-chip flash memory for program storage, as opposed to one-time programmable ROM, EPROM, or EEPROM used by other microcontrollers at the time.</p>
+       
+                            </ul>
+                            
+                            <h4></h4>
+                            <p><b>Memory & Registers</b></p>
+                            <p>Memory is an area where code and instructions are stored.There are normally 3 types of memory present in a microcontroller. These are SRAM, FLASH, and EEPROM memories. </p>
+                            <ul>
+                            <li><b>SRAM</b> is the type of memory where data must be read and written to repeatedly. This is the data will change the different code being uploaded to the AVR microcontroller circuit. By default, this is the most common and used type of memory.</li>
+                            <li><b>Flash memory</b> is the memory that normally stores data that does not change. This is the program memory. It stores the part of the microcontroller program that is fixed and will always stay permanent. This is similar to the BIOS of a general-purpose computer.</li>
+                            <img src="images/week9/0024.jpg">
+                            <p>The Flash memory has an endurance of at least <b>10,000 write/erase cycles</b>. The ATtiny24A/44A/84A Program Counter (PC) is 10/11/12 bits wide, thus addressing the 1024/2048/4096 Program memory locations </p>
+                            
+                            <li><b>Registers</b> are small memory elements in microcontrollers with 8 bits capacity. Registers can be accessed quickly by the ALU (Arithmetic and Logic Unit) of microcontrollers </li>
+                            <img src="images/week9/0025.jpg"><br><br>
+                            
+                            
+                            
+                            </ul>
+                            
+                            
+                            
+                            <h4>Hello-Echo board</h4>
+                            <img src="images/week7/PCB.png" width="100%">
+                            <p>This week we need to progarmme the <b>Hello-echo board </b> that we designed in the <a href="week7.html">Electronics Design</a> week.<br> Echo board is based on the <b>Microchip ATtiny44</b> . It's a <b>8-bit RISC</b> based  microcontroller.The Originla Design have only the <b>UART</b> Port and I added e a Programmable Button connected to pin <b>PA2</b> with a <b>Pull-down</b> Resistor and LED connectd to <b>PA3</b> also it's have <b>20hz</b> External Resonator.  </p>
+                           
+                            
+                            <h4>ATtiny44</h4><br>
+                            <p>It's a low power <b>AVR® 8-bit</b> microcontroller based on the RISC architecture.It have 12 GPIO pin's. </p>
+                            <img src="images/week9/002.PNG" width="100%">
+                            <p>The Atmel ATtiny24/44/84 provides the following features: 2/4/8K bytes of in-system programmable flash, 128/256/512 bytes EEPROM, 128/256/512 bytes SRAM, 12 general purpose I/O lines, 32 general purpose working registers, an 8-bit Timer/Counter with two PWM channels, a 16-bit Timer/Counter with two PWM channels, internal and external interrupts, an 8-channel 10-bit ADC, programmable gain stage (1x, 20x) for 12 differential ADC channel pairs, a programmable watchdog timer with internal oscillator, internal calibrated oscillator, and three software selectable power saving modes</p>
+                            <p>The best Guide to know about a microcontroller and Instruction set it's <b>Datasheet</b>.we will get all the information from the Datasheet , only problem is it's not a beginner friendly. I started Reading ATtiny44 Datasheet that i got from the Micorchip website. <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7701_Automotive-Microcontrollers-ATtiny24-44-84_Datasheet.pdf">Here you can Download it </a>. </p>
+                            <p>For Six -Wire ISP Programming of ATtiny 44 using six pins shown in below</p>
+                            <ul>
+                            <li><b>SCK(Serial Clock)</b>: Programming clock, generated by the In-System Programmer (Master)</li><br>
+                            <li><b>MOSI(Master Out - Slave In )</b>: Communication line from In-System Programmer (Master) to target AVR being programmed (Slave )</li><br>
+                            <li><b>MISO( Master In - Slave Out )</b>: Communication line from target AVR (Slave) to In- System Programmer (Master)</li><br>
+                            <li><b>RST(Reset)</b>: To enable In-System Programming, the target AVR Reset must be kept active. To simplify this, the In-System Programmer should control the target AVR Reset</li><br>
+                            <li><b>GND(Ground)</b>: Common Ground</li><br>
+                            </ul>
+
+                            
+                            <img src="images/week9/004.PNG"><br><br>
+                        
+                            <h4>Pin Descriptions</h4>
+                            <ul>
+                            <li><b>VCC</b></li> 
+                            <p>Supply voltage</p>
+                                
+                            <li><b>GND</b></li>
+                            <p>Ground</p>
+                                
+                            <li><b>Port B (PB3...PB0</b>)</li>
+                            <p>Port B is a 4-bit bi-directional I/O port with internal pull-up resistors (selected for each bit). As inputs, Port B pins that are externally pulled low will source current if the pull-up resistors are activated.so we don't need to add a pull-up resistor externaly for button's and other purpose.</p>
+                            
+                            <li><b>RESET</b></li>
+                            <p>Reset input. A low level on this pin for longer than the minimum pulse length will generate a reset, even if the clock is not running.a reset will just reset the programm that currently runnig . </p>
+                                
+                            <li><b>Port A (PA7...PA0)</b></li>
+                            <p>Port A is a 8-bit bi-directional I/O port with internal pull-up resistors (selected for each bit). As inputs, Port A pins that are externally pulled low will source current if the pull-up resistors are activated</p>
+                            
+                            </ul>
+                            
+                            <p><b>Block Diagram</b></p>
+                            <img src="images/week9/003.PNG" width="50%">
+                            <p>Block Diagram will explain Architecture of the Microcontroller.The AVR uses a <b>Harvard architecture</b>, with separate memories and buses for program and data. Instructions in the program memory are executed with a single-level pipelining. While one instruction is being executed, the next instruction is <b>pre-fetched</b> from the program memory. The ALU supports arithmetic and logic operations between registers or between a constant and a register. Single-register operations can also be executed in the ALU. After an arithmetic operation, the status register is updated to reflect information about the result of the operation.we wil go through all the Stacks when we comes to Progarmme the chip.</p>
+               
+                            
+                            <h4>Embedded Programming</h4>
+                            <p>There is several ways to progaramme a AVR Microcontroller. Easiest one is using <b>Arduino IDE</b> and there is Microchip Official tool one <b>Atmel Studio</b> also we have toolchain in <b>GCC</b>.First we are using Arduino IDE.We are using the <b>FabTiny ISP</b> as our Progarmmer . </p>
+                            
+                            <h4>Arduino</h4>
+                            <p>Arduino is an open-source electronics platform based on easy-to-use hardware and software.ou can tell your board what to do by sending a set of instructions to the microcontroller on the board. To do so you use the Arduino programming language (based on Wiring), and the Arduino Software (IDE), based on Processing.Anyone can use Arduino.<br>The Arduino system is based on the avr-gcc compiler and makes use of the standard AVR libc libraries, which are open-source C libraries, specifically written for Atmel hardware.You can downdload the <a herf="https://www.arduino.cc/en/Main/Software">Arduino IDE here</a>.now arduino also have <b>Online IDE</b>.</p>
+                                
+                            <p>By default the arduino software doesnt contain Attiny 44 chip librarys. We need to include the deatils manually.</p>
+                              
+                            <p>In windows we need to install the <b>SPI interface</b> driver , you can download driver <a herf="https://learn.adafruit.com/usbtinyisp/drivers">here</a> .</p>
+                            
+                            <ul>
+                            <li>Install and Open <b>Arduino IDE</b></li>  
+                            <li>Open preference by clicking <code>File >> preference</code>  </li>
+                            <img src="images/week9/006.png">
+                            <li>In <b>Additional Board Manager URls</b> add the Following URL </li>
+                         <code>https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards manager/package_damellis_attiny_index.json</code>
+                            <br><br><img src="images/week9/007.png">
+                            <li>After adding the URL open <b>Board Manager</b> by clicking <code>Tools >> Board >> Board Manager</code> </li>
+                            <img src="images/week9/008.png">
+                            <li>Search for <b>ATtiny44</b> in the following Window.(Make sure you have Internet connection).and Install the latest version .</li>
+                            <img src="images/week9/009.png">
+                            <li>Now you can select <b>ATtiny44 </b> under the ATtiny Microcontrollers in board Selection </li>
+                            <img src="images/week9/0010.png">
+                            <li>Select appropriate <b>Clock</b> and <b>Programmer</b>.</li>
+                            <img src="images/week9/011.png"> <br>
+                            <p>We are using <b>Fab ISP</b> to programme the <b>Hello-Echo board</b> so Select the <b>Programmer</b> as <b>USBtinyISP</b>.</p>
+                            <img src="images/week9/012.png">
+                            <p>First we need to <b></b></p>
+                            </ul>
+                            <p>Now all set , first we are going to progarmme <b>Blink</b> a.k.a <b>Hello world</b>.</p>
+                            <p><b>Arduino Code</b></p>
+                            <pre>
+                            <code>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Set PA3 Pin as OUTPUT </font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47;Set PA3 ON(5v) &nbsp;&nbsp;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Wait 1 sec</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;Set PA3 OFF(OFF)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Wait 1 sec</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+</code>
+</pre>
+                                
+                        <p>Click <b>Upload</b> to flash the Hello-Echo Board .</p>
+                            
+                        <iframe src="https://giphy.com/embed/9V5c3w0B2yZocJmSV6" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                            
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4lQGvkmLhDo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                            
+                        
+                        <p>LED will ON when we Press the Button.</p>
+                        <pre><code>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+ <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;set PA3 as output (LED)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA2</font><font color="#434f54">,</font><font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;set PA2 as input (Button)</font>
+ <font color="#000000">}</font>
+ <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+ <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#00979c">int</font> <font color="#000000">ButtonData</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">PA2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;store PA2 value to ButtonData variable</font>
+
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">ButtonData</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;check the ButtonData is HIGH (HIGH means button is pressed)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turn on the PA3 (LED on)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">else</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Turn off PA3 (LED OFF)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</code>
+</pre>
+                             
+                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                            
+                        <h4>Atmel Studio (GCC C)</h4>
+                        
+                        <p>Atmel Studio is the integrated development platform (IDP) for developing and debugging all AVR® and SAM microcontroller applications. The Atmel Studio 7 IDP gives you a seamless and easy-to-use environment to write, build and debug your applications written in C/C++ or assembly code. It also connects seamlessly to the debuggers, programmers and development kits that support AVR and SAM devices. (source:- microchip offical page).</p>
+                            
+                        <p>In <b>embedded c </b> we need handle the <b>registers</b>.Each of the AVR Digital I/O ports is associated with three (3) I/O register. A Data Direction Register (DDRx), A Pin Register (PINx) and a Port Register (PORTx). Where x is the port A, B, C, etc. </p>
+                        <p><b><u>DDRx - Port X Data Direction Register</u></b> <br>
+                        <img src="images/week9/0021.jpg"><br>
+                        DDRx is an 8-bit register which stores configuration information for the pins of Portx. Writing a 1 in the pin location in the DDRx makes the physical pin of that port an output pin and writing a 0 makes that pin an input pin.<br>
+                        <b>Note:</b> Each physical pin of a port is configured independently and thus a port can have some of its pins configured as input an the others as output pins.</p>
+                        
+                        <p><b><u>PINx - Port X Input Pins Register</u></b> <br>
+                        <img src="images/week9/0022.jpg"><br>
+                        PINx is an 8-bit register that stores the logic value, the current state, of the physical pins on Portx. So to read the values on the pins of Portx, you read the values that are in its PIN register.</p>
+                            
+                        <p><b><u>PORTx - Port X Data Register</u></b> <br>
+                        <img src="images/week9/0023.jpg"><br>
+                        PORTx is an 8-bit register which stores the logic values that currently being outputted on the physical pins of Portx if the pins are configured as output pins. So to write values to a port, you write the values to the PORT register of that port..</p>
+                        
+                        
+                        <p>In Atmel Studio we are writing <b>C</b> code. In order to use the <b>Atmel Studio</b> with our <b>Fab ISP</b> we need to configure the studio before use.</p>
+                        <img src="images/week9/0014.png"><br><br>
+                        
+                        <ul>
+                        <li><b>Debug Verison</b></li><br>
+                        <p>Title:- <b>USBTiny ISP Debug</b>.<br>
+                        Command :- <b>avrdude.exe</b><br>
+                        Arguments :- <b>-c usbtiny -p attiny44  -U flash:w:$(ProjectDir)Debug\$(TargetName).hex:i</b></p>
+                        <p>click apply and ok to save the tool.</p>
+                        
+                        <li><b>Release Verison</b></li> <br>
+                        <p>Title:- <b>USBTiny ISP Release</b>.<br>
+                        Command :- <b>avrdude.exe</b><br>
+                        Arguments :- <b>-c usbtiny -p attiny44  -U flash:w:$(ProjectDir)Release\$(TargetName).hex:i</b></p>
+                        <p>click apply and ok to save the tool.</p>
+                        </ul>
+                            
+                        <p>I created two tools for our projects os it will  have separate release and debug configurations for ou program. As the names imply, we build the debug version for <b>debugging</b> and the <b>release</b> version for the final release distribution.<br>If don't have the <b>Avrdude</b> (you can check it by typing <b>Avrdude</b> in cmd) just download and install the <b>WinAVR</b>  <a href="https://sourceforge.net/projects/winavr/">  here you can download it</a> </p>
+                        
+                            
+                        <ul>
+                        <li>Start a Project by clicking <b>File</b> >> <b>New</b> >> <b>Project</b> </li>  
+                        <img src="images/week9/0016.png"><br><br>
+                        <li>select <b>C/C++</b> as language and Template as <b>GCC C Executable Project</b> give a name and click <b>OK</b>.</li>
+                        <img src="images/week9/0017.png" ><br><br>
+                        <li>Select the Target Microcontroller , in here we have <b>ATtiny44</b>.</li>
+                        <img src="images/week9/0020.png" >
+                        </ul>
+                        
+                        <pre><code>
+<font color="#5e6d03">#define</font> <font color="#000000">F_CPU</font> <font color="#000000">20000000UL</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Clock 20-Mhz</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">avr</font><font color="#434f54">&#47;</font><font color="#000000">io</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<font color="#00979c">int</font> <font color="#000000">main</font><font color="#000000">(</font><font color="#00979c">void</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ 
+ &nbsp;&nbsp;&nbsp;<font color="#000000">DDRA</font> <font color="#434f54">|=</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Set PA3 as OUTPUT</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">DDRA</font> <font color="#434f54">&amp;=</font><font color="#434f54">~</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Set PA2 as INPUT</font>
+ 
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">while</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">PINA</font> <font color="#434f54">&amp;</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">)</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;check PA2 is HIGH</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">PORTA</font> <font color="#434f54">=</font> <font color="#000000">PORTA</font><font color="#434f54">|</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; set PA3 as HIGH(ON)</font>
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">else</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">PORTA</font> <font color="#434f54">&amp;=</font><font color="#434f54">~</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;set PA3 as LOW (OFF)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font> &nbsp;&nbsp;
+<font color="#000000">}</font>
+
+ </code></pre>
+                       
+                        
+                        <ul>
+                        <li>For Uploading code first we need to build/compile it by using <b>Build</b> >> <b>Build Soution</b> </li>
+                        <img src="images/week9/0018.png"><br><br>
+                        <li>After the compailation we need to flash the code in to our board</li>
+                        <img src="images/week9/0019.png"><br><br>
+                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                        <p>Output was not differnt with the arduino becasue we just blink the led when the button press.</p>
+                        </ul><br><br>
+                        <h4>Atmel Studio (Assembler) </h4>
+                        <p>Assembly language is an alphanumeric representation of machine code.The instructions used in writing programs in assembly language are not general but specific to the microcontroller. Each company provides a set of instructions for there microcontrollers. AVR 8-bits microcontrollers have a <a href="http://www.avr-tutorials.com/sites/default/files/Instruction%20Set%20Summary.pdf"> common instruction set</a>.</p>
+                        <p>When we code in <b>Assembler</b> we need the datasheet to know about the MC <b>instruction set</b>.<br></p>
+                        <img src="images/week9/0026.png">
+                        <p>So here we are using <b>Atmel studio</b> to write the Assebler code .First we need to start a project that we did in the C code.After that Select the <b>Assembler</b> in template and Click ok.<br>
+                        After that Select our Target Microcontroller , we have <b>ATtiny44</b>. </p>
+<pre><code>
+.org 0
+ sbi DDRA,3
+ cbi DDRA,2
+ 
+ main:
+ SBIC PINA,2
+ sbi PORTA,3
+ SBIC PINA,2
+ RJMP main
+ cbi PORTA,3
+ 
+ RJMP main
+
+
+</code>
+</pre>
+                        <p>This our Assembler code that will Turn on the led when we press the LED.i exaplin the code.</p>
+                        <ul>
+                        <li><code>.org</code> :- it used for set the <b>PC(Programme Counter)</b> in a Specific value, in here we set PC in Zero</li><br>
+                        <li><code>sbi</code> :- Set bit , so here <code>sbi DDRA,3</code> we are set the 3rd bit of A port as 1 , so the PA3 will be <b>OUTPUT</b></li><br>
+                        <li><code>cbi</code> :- Clear bit , so here <code>cbi DDRA,2</code> we are set the 2nd bit of port as 0, os the PA2 will be <b>INPUT</b></li><br>
+                        <li><code>main:</code> :- this is a label name it's like a function, all the code under the label we can get by calling the label name</li><br>
+                        <li><code>SBIC</code> :- in here it will <b>skips</b> the next instruction depending on the I/O bit's state, so here it will skip based on the <code>PINA 2</code> bit's </li><br>
+                        <li><code>RJMP</code> :- Relative Jump , here it will jump into a specfic label's that we mentioned , so here it will jump to <b>main</b> label.</li>
+                        </ul>
+                        <p>For Uploading code first we need to build/compile it by using <b>Build</b> >> <b>Build Soution</b> </p>
+                        <img src="images/week9/0018.png"><br><br>
+                        <p>After the compailation we need to flash the code in to our board</p>
+                        <img src="images/week9/0019.png"><br><br>
+                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                        
+                        <h4>PWM-Pulse Width Modulation</h4>
+                        <p>PWM, is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off. This on-off pattern can simulate voltages in between full on (5 Volts) and off (0 Volts) by changing the portion of the time the signal spends on versus the time that the signal spends off. The duration of "on time" is called the pulse width. To get varying analog values, you change, or modulate, that pulse width. If you repeat this on-off pattern fast enough with an LED for example, the result is as if the signal is a steady voltage between 0 and 5v controlling the brightness of the LED.</p>
+                        <img src="images/week9/0027.png"><br><br>  
+                        <p> In  here the green lines represent a regular time period. This duration or period is the inverse of the PWM frequency. In other words, with Arduino's PWM frequency at about 500Hz, the green lines would measure 2 milliseconds each. A call to analogWrite() is on a scale of 0 - 255, such that analogWrite(255) requests a 100% duty cycle (always on), and analogWrite(127) is a 50% duty cycle (on half the time) for example. (Source :- Arduino.cc)</p>
+                        <img src="images/week9/0028.png"><br>
+                        <p>Not all the pin's of <b>ATtiny44</b> support <n>PWM</n>, in my board i used <b>PA3</b> for led, but unfortunately that's not supported PWM, for this experiment i used my colleagues hello-echo board .he used pin <b>PA7</b> and it's PWM supported.<br>i used <b>Arduino IDE</b> to progarmme the board .</p>
+                        
+                        <pre> <code>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA7</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47;set PA7 as OUTPUT</font>
+<font color="#000000">}</font>
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font><font color="#000000">i</font><font color="#434f54">&lt;=</font><font color="#000000">255</font><font color="#000000">;</font><font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">PA7</font><font color="#434f54">,</font><font color="#000000">i</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47;write &#34;i&#34; to PA7 Pin</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</code></pre>
+                        
+                        <p>In here we are using <code>analogWrite()</code> to give <b>PWM</b> signal.in <code>digitalWrite</code> we can only write <b>HIGH</b> or <b>LOW</b> but we need to genrate the 8-bit data get a PWM signal that's why we used <b>analogWrite</b> The variable dutyCycle can be set to a value between <b>0</b> and <b>255</b>, whereby 0 means the pin is always off and 255 means it's always on. The problem is, that you cannot set the frequency of the output square wave. The default frequency seems to be either 250 Hz or 500 Hz, which is clearly not enough for certain use cases. To change the frequency, you have to set the appropriate flags in the Attinys registers manually. </p>
+                        
+                         
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/mKg1A_tDErI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                        <h4>Timer Configuration</h4>
+                        <p>On the Attiny84 and other Atmel chips only certain pins can be used for PWM output. Every PWM-pin is controlled by a certain timer and different chips have different timers. It's all mentioned in the datasheet . The Attiny84 has two timers called Timer0 and Timer1 and four PWM pins. The pins 5 and 6 (Arduino digital pins 8 and 7 respectively) are controlled by Timer0 and the pins 7 and 8 (Arduino digital pins 6 and 5 respectively) are controlled by Timer1.<br>
+                        Timer0 is used by the Arduino environment for timing functions like delay(), millis() and micros() and many libraries depend on these. So by changing the frequency of Timer0 a lot of libraries will stop working correctly.</p>
+
+                        
+                        
+                            
+                        <h4>Benchmark Test</h4>
+                        <p>In here we are testing to determine the performance characteristics of Our board in different Lanagues .we are testing the execution speed by turn-0ff and turn-on the led without delay.</p>
+                        <p><b>pseudocode</b> <br></p>
+<pre>
+<code>
+Turn ON LED
+Turn OFF LED 
+</code>
+</pre>                  
+                        <ul>
+                        <li><b>Arduino</b></li></ul>
+                        
+<pre>
+<code>
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PA3</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</code></pre><br>
+                        <img src="images/week9/arduino.bmp"><br>
+                        <p>Uploded code with FabISP.<br></p>
+                        <ul><li><b>log file</b></li></ul>
+<pre>
+<code>
+C:\Program Files (x86)\Arduino\arduino-builder -dump-prefs -logger=machine -hardware C:\Program Files (x86)\Arduino\hardware -hardware C:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages -tools C:\Program Files (x86)\Arduino\tools-builder -tools C:\Program Files (x86)\Arduino\hardware\tools\avr -tools C:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages -built-in-libraries C:\Program Files (x86)\Arduino\libraries -libraries C:\Users\FAB roland camm-1\Documents\Arduino\libraries -fqbn=attiny:avr:ATtinyX4:cpu=attiny24,clock=internal1 -ide-version=10805 -build-path C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086 -warnings=none -build-cache C:\Users\FABROL~1\AppData\Local\Temp\arduino_cache_921379 -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.arduinoOTA.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -verbose C:\Users\FAB roland camm-1\Desktop\salman-faris\week8\Serial\Serial.ino
+C:\Program Files (x86)\Arduino\arduino-builder -compile -logger=machine -hardware C:\Program Files (x86)\Arduino\hardware -hardware C:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages -tools C:\Program Files (x86)\Arduino\tools-builder -tools C:\Program Files (x86)\Arduino\hardware\tools\avr -tools C:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages -built-in-libraries C:\Program Files (x86)\Arduino\libraries -libraries C:\Users\FAB roland camm-1\Documents\Arduino\libraries -fqbn=attiny:avr:ATtinyX4:cpu=attiny24,clock=internal1 -ide-version=10805 -build-path C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086 -warnings=none -build-cache C:\Users\FABROL~1\AppData\Local\Temp\arduino_cache_921379 -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.arduinoOTA.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -verbose C:\Users\FAB roland camm-1\Desktop\salman-faris\week8\Serial\Serial.ino
+Using board 'ATtinyX4' from platform in folder: C:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages\attiny\hardware\avr\1.0.2
+Using core 'arduino' from platform in folder: C:\Program Files (x86)\Arduino\hardware\arduino\avr
+Detecting libraries used...
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-g++" -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics  -flto -w -x c++ -E -CC -mmcu=attiny24 -DF_CPU=1000000L -DARDUINO=10805 -DARDUINO_attiny -DARDUINO_ARCH_AVR   "-IC:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" "-IC:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages\attiny\hardware\avr\1.0.2\variants\tiny14" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\sketch\Serial.ino.cpp" -o "nul"
+Generating function prototypes...
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-g++" -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics  -flto -w -x c++ -E -CC -mmcu=attiny24 -DF_CPU=1000000L -DARDUINO=10805 -DARDUINO_attiny -DARDUINO_ARCH_AVR   "-IC:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" "-IC:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages\attiny\hardware\avr\1.0.2\variants\tiny14" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\sketch\Serial.ino.cpp" -o "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\preproc\ctags_target_for_gcc_minus_e.cpp"
+"C:\Program Files (x86)\Arduino\tools-builder\ctags\5.8-arduino11/ctags" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\preproc\ctags_target_for_gcc_minus_e.cpp"
+Compiling sketch...
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-g++" -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -mmcu=attiny24 -DF_CPU=1000000L -DARDUINO=10805 -DARDUINO_attiny -DARDUINO_ARCH_AVR   "-IC:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" "-IC:\Users\FAB roland camm-1\AppData\Local\Arduino15\packages\attiny\hardware\avr\1.0.2\variants\tiny14" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\sketch\Serial.ino.cpp" -o "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\sketch\Serial.ino.cpp.o"
+Compiling libraries...
+Compiling core...
+Using precompiled core
+Linking everything together...
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-gcc" -w -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -mmcu=attiny24  -o "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.elf" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086\sketch\Serial.ino.cpp.o" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/..\arduino_cache_921379\core\core_attiny_avr_ATtinyX4_cpu_attiny24,clock_internal1_0c812875ac70eb4a9b385d8fb077f54c.a" "-LC:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086" -lm
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-objcopy" -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0  "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.elf" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.eep"
+"C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avr-objcopy" -O ihex -R .eeprom  "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.elf" "C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.hex"
+Sketch uses 512 bytes (25%) of program storage space. Maximum is 2048 bytes.
+Global variables use 9 bytes (7%) of dynamic memory, leaving 119 bytes for local variables. Maximum is 128 bytes.
+C:\Program Files (x86)\Arduino\hardware\tools\avr/bin/avrdude -CC:\Program Files (x86)\Arduino\hardware\tools\avr/etc/avrdude.conf -v -pattiny24 -cusbtiny -Uflash:w:C:\Users\FABROL~1\AppData\Local\Temp\arduino_build_875086/Serial.ino.hex:i 
+
+
+
+
+
+avrdude: Version 6.3, compiled on Jan 17 2017 at 12:00:53
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "C:\Program Files (x86)\Arduino\hardware\tools\avr/etc/avrdude.conf"
+
+         Using Port                    : usb
+         Using Programmer              : usbtiny
+An error occurred while uploading the sketch
+avrdude: usbdev_open(): Found USBtinyISP, bus:device: bus-0:\\.\libusb0-0001--0x1781-0x0c9f
+         AVR Part                      : ATtiny24
+         Chip Erase delay              : 4500 us
+         PAGEL                         : P00
+         BS2                           : P00
+         RESET disposition             : possible i/o
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65     6     4    0 no        128    4      0  4000  4500 0xff 0xff
+           flash         65     6    32    0 yes      2048   32     64  4500  4500 0xff 0xff
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  9000  9000 0x00 0x00
+           lfuse          0     0     0    0 no          1    0      0  9000  9000 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  9000  9000 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  9000  9000 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+
+         Programmer Type : USBtiny
+         Description     : USBtiny simple USB programmer, http://www.ladyada.net/make/usbtinyisp/
+avrdude: programmer operation not supported
+
+avrdude: Using SCK period of 10 usec
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: Device signature = 0x1e9207 (probably t44)
+avrdude: Expected signature for ATtiny24 is 1E 91 0B
+         Double check chip, or use -F to override this check.
+
+avrdude done.  Thank you.
+
+
+</code></pre>
+                            
+                            <ul><li><b>GCC C (Atmel Studio)</b></li></ul>
+<pre>
+<code>
+
+<pre>
+<font color="#5e6d03">#define</font> <font color="#000000">F_CPU</font> <font color="#000000">20000000UL</font>
+
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">avr</font><font color="#434f54">&#47;</font><font color="#000000">io</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">int</font> <font color="#000000">main</font><font color="#000000">(</font><font color="#00979c">void</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">DDRA</font> <font color="#434f54">|=</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#5e6d03">while</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">PORTA</font> <font color="#434f54">|=</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">PORTA</font> <font color="#434f54">&amp;=</font><font color="#434f54">~</font><font color="#000000">(</font><font color="#000000">1</font><font color="#434f54">&lt;&lt;</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+
+</pre>
+</code></pre><br>
+                            <img src="images/week9/AtmelC.bmp"><br>
+                        <ul><li><b>log file</b></li></ul>
+<pre>
+<code>
+------ Build started: Project: Test, Configuration: Debug AVR ------
+Build started.
+Project "Test.cproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "C:\Program Files (x86)\Atmel\Studio\7.0\Vs\Compiler.targets" from project "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Test.cproj" (target "Build" depends on it):
+	Using "RunCompilerTask" task from assembly "C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\Application\AvrGCC.dll".
+	Task "RunCompilerTask"
+		Shell Utils Path C:\Program Files (x86)\Atmel\Studio\7.0\shellUtils
+		C:\Program Files (x86)\Atmel\Studio\7.0\shellUtils\make.exe all --jobs 4 --output-sync 
+		Building file: .././main.c
+		Invoking: AVR/GNU C Compiler : 5.4.0
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe"  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny44 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\gcc\dev\attiny44" -c -std=gnu99 -MD -MP -MF "main.d" -MT"main.d" -MT"main.o"   -o "main.o" ".././main.c" 
+		Finished building: .././main.c
+		Building target: Test.elf
+		Invoking: AVR/GNU Linker : 5.4.0
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe" -o Test.elf  main.o   -Wl,-Map="Test.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=attiny44 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\gcc\dev\attiny44"  
+		Finished building target: Test.elf
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Test.elf" "Test.hex"
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Test.elf" "Test.eep" || exit 0
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "Test.elf" > "Test.lss"
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "Test.elf" "Test.srec"
+		"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "Test.elf"
+		   text	   data	    bss	    dec	    hex	filename
+		     64	      0	      0	     64	     40	Test.elf
+	Done executing task "RunCompilerTask".
+	Using "RunOutputFileVerifyTask" task from assembly "C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\Application\AvrGCC.dll".
+	Task "RunOutputFileVerifyTask"
+				Program Memory Usage 	:	64 bytes   1.6 % Full
+				Data Memory Usage 		:	0 bytes   0.0 % Full
+	Done executing task "RunOutputFileVerifyTask".
+Done building target "CoreBuild" in project "Test.cproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "C:\Program Files (x86)\Atmel\Studio\7.0\Vs\Avr.common.targets" from project "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Test.cproj" (entry point):
+Done building target "Build" in project "Test.cproj".
+Done building project "Test.cproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========
+
+
+
+
+
+avrdude.exe: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude.exe: Device signature = 0x1e9207
+avrdude.exe: NOTE: FLASH memory has been specified, an erase cycle will be performed
+             To disable this feature, specify the -D option.
+avrdude.exe: erasing chip
+avrdude.exe: reading input file "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Debug\Test.hex"
+avrdude.exe: writing flash (64 bytes):
+
+Writing | ################################################## | 100% 0.13s
+
+avrdude.exe: 64 bytes of flash written
+avrdude.exe: verifying flash memory against C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Debug\Test.hex:
+avrdude.exe: load data flash data from input file C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Debug\Test.hex:
+avrdude.exe: input file C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\Test\Test\Debug\Test.hex contains 64 bytes
+avrdude.exe: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.09s
+
+avrdude.exe: verifying ...
+avrdude.exe: 64 bytes of flash verified
+
+avrdude.exe: safemode: Fuses OK
+
+avrdude.exe done.  Thank you.
+
+
+</code></pre>
+                            <ul><li><b>Assembly</b></li></ul>
+                            
+<pre>
+<code>
+<pre>
+<font color="#434f54">.</font><font color="#000000">org</font> <font color="#000000">0</font>
+<font color="#000000">sbi</font> <font color="#000000">DDRA</font><font color="#434f54">,</font><font color="#000000">3</font>
+
+<font color="#000000">main</font><font color="#434f54">:</font>
+<font color="#000000">sbi</font> <font color="#000000">PORTA</font><font color="#434f54">,</font><font color="#000000">3</font>
+<font color="#000000">cbi</font> <font color="#000000">PORTA</font><font color="#434f54">,</font><font color="#000000">3</font>
+
+<font color="#000000">RJMP</font> <font color="#000000">main</font>
+
+</pre>
+</code></pre><br>
+                            <img src="images/week9/Assembly.bmp">
+                            
+                            <ul><li><b>log file</b></li></ul> <br>
+<pre>
+<code>
+
+------ Build started: Project: testAssem, Configuration: Debug AVR ------
+Build started.
+Project "testAssem.asmproj" (default targets):
+Target "PreBuildEvent" skipped, due to false condition; ('$(PreBuildEvent)'!='') was evaluated as (''!='').
+Target "CoreBuild" in file "C:\Program Files (x86)\Atmel\Studio\7.0\Vs\Assembler.targets" from project "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\testAssem.asmproj" (target "Build" depends on it):
+	Task "RunAssemblerTask"
+		C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\avrasm2.exe -fI -o "testAssem.hex"  -m "testAssem.map"  -l "testAssem.lss"  -S "testAssem.tmp"  -W+ie -I"C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\avrasm\inc"  -itn44def.inc -d "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\Debug\testAssem.obj"  "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\main.asm"  -I "C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include" 
+		AVRASM: AVR macro assembler 2.2.7 (build 69 Jul 26 2017 16:25:06)
+		Copyright (C) 1995-2017 ATMEL Corporation
+		[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\avrasm\inc\tn44def.inc'
+		[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.147\avrasm\inc\tn44def.inc'
+		"ATtiny44" memory use summary [bytes]:
+		Segment   Begin    End      Code   Data   Used    Size   Use%
+		---------------------------------------------------------------
+		[.cseg] 0x000000 0x000008      8      0      8    4096   0.2%
+		[.dseg] 0x000060 0x000060      0      0      0     256   0.0%
+		[.eseg] 0x000000 0x000000      0      0      0     256   0.0%
+		Assembly complete, 0 errors. 0 warnings
+	Done executing task "RunAssemblerTask".
+Done building target "CoreBuild" in project "testAssem.asmproj".
+Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '') was evaluated as ('' != '').
+Target "Build" in file "C:\Program Files (x86)\Atmel\Studio\7.0\Vs\Avr.common.targets" from project "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\testAssem.asmproj" (entry point):
+Done building target "Build" in project "testAssem.asmproj".
+Done building project "testAssem.asmproj".
+
+Build succeeded.
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========
+
+
+
+
+
+
+avrdude.exe: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude.exe: Device signature = 0x1e9207
+avrdude.exe: NOTE: FLASH memory has been specified, an erase cycle will be performed
+             To disable this feature, specify the -D option.
+avrdude.exe: erasing chip
+avrdude.exe: reading input file "C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\Debug\testAssem.hex"
+avrdude.exe: writing flash (8 bytes):
+
+Writing | ################################################## | 100% 0.02s
+
+avrdude.exe: 8 bytes of flash written
+avrdude.exe: verifying flash memory against C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\Debug\testAssem.hex:
+avrdude.exe: load data flash data from input file C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\Debug\testAssem.hex:
+avrdude.exe: input file C:\Users\FAB roland camm-1\Documents\Atmel Studio\7.0\testAssem\testAssem\Debug\testAssem.hex contains 8 bytes
+avrdude.exe: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude.exe: verifying ...
+avrdude.exe: 8 bytes of flash verified
+
+avrdude.exe: safemode: Fuses OK
+
+avrdude.exe done.  Thank you.
+</code></pre><br>
+                     
+                            
+                <h4>Conclusion</h4>
+                <p>Arduino is have very large <b>foot print</b> comparing other's</p>
+                <img src="images/week9/hex.png"><br><br>
+                <p>These are the <b>HEX</b> files that genarated by <b>Arduino</b>,<b>GCC C</b> and <b>ASSEMBLY</b> respectively.I used <b>DSO</b> but i got same result in every code, i expected some big variations but did't got anything.</p><br>
+                            
+                <hr>
+                    
+                <h4>Experiment with other architectures</h4>
+                <p>In this week group assignment is to try out some other acchtecture other than AVR microcontrollers.</p>
+                
+                <h4>ARM Architecture</h4>
+                <p>ARM, previously Advanced RISC Machine, originally Acorn RISC Machine, is a family of reduced instruction set computing (RISC) architectures for computer processors, configured for various environments.Processors that have a RISC architecture typically require fewer transistors than those with a complex instruction set computing (CISC) architecture (such as the x86 processors found in most personal computers), which improves cost, power consumption, and heat dissipation. These characteristics are desirable for light, portable, battery-powered device-including smartphones, laptops and tablet computers, and other embedded systems.] For supercomputers, which consume large amounts of electricity, ARM could also be a power-efficient solution.</p>
+                <p>Most of our mobile phones are based on <b>ARM</b> and now it used on server's and super controllers.<b>Raspberry Pi</b> is Single board computer that based on <b>ARM</b>. </p>
+                
+                <h4>STM32</h4>
+                <p>STM32 is a family of 32-bit microcontroller integrated circuits by <b>STMicroelectronics</b>. The STM32 chips are grouped into related series that are based around the same 32-bit ARM processor core, such as the Cortex-M7F, Cortex-M4F, Cortex-M3, Cortex-M0+, or Cortex-M0. Internally, each microcontroller consists of the processor core, static RAM memory, flash memory, debugging interface, and various peripherals.</p>
+                <p>In here Fablab Kochi we have the <b>STM32F401</b> series <b>Nucleo</b> development boards.it's a part of the STM32 Dynamic Efficiency™ device range. These devices offer the best balance of dynamic power consumption (in run mode) and processing performance, while integrating a high number of added-value features in packages as small as 3 x 3 mm.<br>
+                The MCUs deliver the performance of Cortex®-M4 core with floating point unit, running at 84 MHz, while achieving outstandingly low power consumption values in run and stop modes.</p>
+                <ul>
+                <li><b>Performance</b>: At 84 MHz, the STM32F401 delivers 105 DMIPS/285 CoreMark performance executing from Flash memory, with 0-wait states using ST’s ART Accelerator. The DSP instructions and the floating point unit enlarge the range of addressable applications.</li>
+                <li><b>Power efficiency</b>: ST’s 90 nm process, ART Accelerator and the dynamic power scaling enables the current consumption in run mode and executing from Flash memory to be as low as 128 µA/MHz. In Stop mode, the power consumption can be as low as 9 µA.</li>
+                <li><b>Integration</b> :The STM32F401 portfolio provides from 128 to 512 Kbytes of Flash, 96 Kbytes of SRAM. The available packages range from 49 to 100 pins.</li>
+                    <ul>
+                    <li>3x USARTs running at up to 10.5 Mbit/s,</li>
+                    <li>4x SPI running at up to 42 Mbit/s,</li>
+                    <li>3x I²C,</li>
+                    <li>1x SDIO,</li>
+                    <li>1x USB 2.0 OTG full speed,</li>
+                    <li>2x full duplex I²S up to up to 32-bit/192KHz,</li>
+                    <li>12-bit ADC reaching 2.4 MSPS,</li>
+                    <li>10 timers, 16- and 32-bit, running at up to 84 MHz</li>
+                    </ul>
+                     </ul>
+                <img src="images/week9/0029.jpg"><br>
+                <p>You can Download the Sheet from <a herf="http://www.st.com/content/ccc/resource/technical/document/datasheet/30/91/86/2d/db/94/4a/d6/DM00102166.pdf/files/DM00102166.pdf/jcr:content/translations/en.DM00102166.pdf">Here</a>.</p>
+                            
+                
+                
+                
+                
+                
+                        
+                        
+                        
+         
+
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                        
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+
+
+                            
+                           
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                         
+                       <hr> <br><br><br>    
+                        <center><h3><a href="week8.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week10.html" align="right">Next&gt;  </a></h3></center>
+						</div>
+					</div>
+                
+                
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="https://www.github.com/salmanfarisvp" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:farissalmannbr@gmail.com" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+        
+        
+        
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

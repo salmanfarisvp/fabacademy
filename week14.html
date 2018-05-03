@@ -1,0 +1,175 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Networking and Communications</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"></span><span class="title">Networking and Communications</span>
+                                    
+								</a>
+                            
+                            
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="assignments.html">Assignments</a></li>
+							<li><a href="finalproject.html">Final Project</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<ul><li>design and build a wired &/or wireless network connecting at least two processors.</li>
+                            <li>send a message between two projects.</li></ul>
+                            <hr>
+                            <h3>Introduction</h3>
+                            <p>In this week we are going to communicate with boards , In interface week we tried bluetooth communication using <b>HC-05</b> module. so here i,am going to try some base hardware level protoclos to learn more about microcontroller communication .i used some of them in arduino projects like I2C LCD interface ,we can save more and sapce. also using <b>SPI</b> in Our FabISP , and we daily using various USB devices . so in the world we are using somany inter-connected device and this week we are explore and build a network .Embedded electronics is all about <b>interlinking circuits</b>(processors or other integrated circuits) to create a symbiotic system. In order for those individual circuits to swap their information, they must share a common communication protocol. Hundreds of communication protocols have been defined to achieve this data exchange, and, in general, each can be separated into one of two categories: parallel or serial. </p>
+                            
+                            <h4>parallel vs serial</h4>
+                            <p>Parallel interfaces transfer multiple bits at the same time. They usually require buses of data - transmitting across eight, sixteen, or more wires. Data is transferred in huge, crashing waves of 1’s and 0’s.</p>
+                            
+                            <figure>
+                            <img src="images/week14/001.png"> 
+                            <figcaption>An 8-bit data bus, controlled by a clock, transmitting a byte every clock pulse. 9 wires are used.(source:-sparkfun)</figcaption></figure>
+                            
+                            <p>Serial interfaces stream their data, one single bit at a time. These interfaces can operate on as little as one wire, usually never more than four.</p>
+                            <figure>
+                            <img src="images/week14/002.png">
+                            <figcaption>Example of a serial interface, transmitting one bit every clock pulse. Just 2 wires required! (source :- sparkfun)</figcaption> 
+                            </figure>
+                            <p>Think of the two interfaces as a stream of cars: a parallel interface would be the 8+ lane mega-highway, while a serial interface is more like a two-lane rural country road. Over a set amount of time, the mega-highway potentially gets more people to their destinations, but that rural two-laner serves its purpose and costs a fraction of the funds to build.</p><hr>
+                            
+                            <h3>Asynchronous Serial</h3>
+                            <p>Over the years, dozens of serial protocols have been crafted to meet particular needs of embedded systems. USB (universal serial bus), and Ethernet, are a couple of the more well-known computing serial interfaces. Other very common serial interfaces include SPI, I2C, and the serial standard we’re here to talk about today. Each of these serial interfaces can be sorted into one of two groups: synchronous or asynchronous.</p>
+                            <p>A synchronous serial interface always pairs its data line(s) with a clock signal, so all devices on a synchronous serial bus share a common clock. This makes for a more straightforward, often faster serial transfer, but it also requires at least one extra wire between communicating devices. Examples of synchronous interfaces include SPI, and I2C.</p>
+                            <p> Asynchronous means that data is transferred <b>without support from an external clock signal</b>. This transmission method is perfect for minimizing the required wires and I/O pins, but it does mean we need to put some extra effort into reliably transferring and receiving data. The serial protocol we’ll be discussing in this tutorial is the most common form of asynchronous transfers. It is so common, in fact, that when most folks say “serial” they’re talking about this protocol </p><hr>
+                            
+                            <h4>Rules of Serial</h4>
+                            <p>The asynchronous serial protocol has a number of built-in rules - mechanisms that help ensure robust and error-free data transfers. These mechanisms, which we get for eschewing the external clock signal, are:</p>
+                            <ul>
+                            <li>Data bits,</li>
+                            <li>Synchronization bits,</li>
+                            <li>Parity bits,</li>
+                            <li>Baud rate</li></ul>
+                            
+                            <p><b>Baud Rate</b></p>
+                            <p>The baud rate specifies how fast data is sent over a serial line. It’s usually expressed in units of bits-per-second (bps). If you invert the baud rate, you can find out just how long it takes to transmit a single bit. This value determines how long the transmitter holds a serial line high/low or at what period the receiving device samples its line.<br>Baud rates can be just about any value within reason. The only requirement is that both devices operate at the same rate. One of the more common baud rates, especially for simple stuff where speed isn’t critical, is 9600 bps. Other “standard” baud are 1200, 2400, 4800, 19200, 38400, 57600, and 115200.</p>
+                            
+                            <h4>Wiring and Hardware</h4>
+                            <p>A serial bus consists of just two wires - one for sending data and another for receiving. As such, serial devices should have two serial pins: the receiver, RX, and the transmitter, TX.</p>
+                            <img src="images/week14/003.png">
+                            <p>It’s important to note that those RX and TX labels are with respect to the device itself. So the RX from one device should go to the TX of the other, and vice-versa. It’s weird if you’re used to hooking up VCC to VCC, GND to GND, MOSI to MOSI, etc., but it makes sense if you think about it. The transmitter should be talking to the receiver, not to another transmitter.The same technique that we used to get data from our board to computer and read data from bluetooth module</p><hr>
+                            
+                            <h4>UARTs</h4>
+                            <p>A universal asynchronous receiver/transmitter (UART) is a block of circuitry responsible for implementing serial communication. Essentially, the UART acts as an intermediary between parallel and serial interfaces. On one end of the UART is a bus of eight-or-so data lines (plus some control pins), on the other is the two serial wires - RX and TX.</p>
+                            <img src="images/week14/004.png">
+                            <p>UARTs do exist as stand-alone ICs, but they’re more commonly found inside microcontrollers. You’ll have to check your microcontroller’s datasheet to see if it has any UARTs. Some have none, some have one, some have many. For example, the Arduino Uno - based on the “old faithful” ATmega328 - has just a single UART, while the Arduino Mega - built on an ATmega2560 - has a whopping four UARTs.</p>
+                            <p><b>Software UARTs</b></p>
+                            <p>If a microcontroller doesn’t have a UART (or doesn’t have enough), the serial interface can be bit-banged - directly controlled by the processor. This is the approach Arduino libraries like SoftwareSerial take , in our <b>ATtiny44</b> and <b>ATtiny45</b> doesn't have <b>Hardware UART</b> so I used <b>Software UART</b> by utilizing Arduino <b>SoftwareSerial</b> library .</p>
+                            
+                            
+                            <hr>
+                            <h4>I2C</h4>
+                            <p>So I start with I2C (a.k.a Two wire interface).as i mentined in the introduction section i done some arduino hobby project . one is I2C interfaced Real Time Clock module,I2C interface 16x2 LCD module .. etc. so why I2C , like it's name it's only need two wire for commuication <b>SDA</b> :- Serial Data and <b>SCL</b> :- Serial Clock.<br> The I2C communication bus is very popular and broadly used by many electronic devices because it can be easily implemented in many electronic designs which require communication between a master and multiple slave devices or even multiple master devices. The easy implementations comes with the fact that only two wires are required for communication between up to almost 128 (112) devices when using 7 bits addressing and up to almost 1024 (1008) devices when using 10 bits addressing.</p>.
+                                                        
+                            <img src="images/week14/005.png">
+                            <p>I2C requires a mere two wires, like asynchronous serial, but those two wires can support up to 1008 slave devices. Also, unlike SPI, I2C can support a multi-master system, allowing more than one master to communicate with all devices on the bus (although the master devices can’t talk to each other over the bus and must take turns using the bus lines).</p> 
+                            
+                            <p><b>I2C - A Brief History</b></p>
+                            <p>I2C was originally developed in 1982 by Philips for various Philips chips. The original spec allowed for only 100kHz communications, and provided only for 7-bit addresses, limiting the number of devices on the bus to 112 (there are several reserved addresses, which will never be used for valid I2C addresses). In 1992, the first public specification was published, adding a 400kHz fast-mode as well as an expanded 10-bit address space. Much of the time (for instance, in the ATMega328 device on many Arduino-compatible boards) , device support for I2C ends at this point. There are three additional modes specified: fast-mode plus, at 1MHz; high-speed mode, at 3.4MHz; and ultra-fast mode, at 5MHz.(source :- sparkfun)</p>
+
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+
+
+
+
+
+                            
+       
+                            
+                        <br><br><br>  
+                        <center><h3><a href="week13.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week15.html" align="right">Next&gt;  </a></h3></center>
+						</div>
+					</div>
+                
+                
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="https://www.github.com/salmanfarisvp" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:farissalmannbr@gmail.com" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+        
+        
+        
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

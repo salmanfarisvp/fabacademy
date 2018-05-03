@@ -1,0 +1,391 @@
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Output Devices</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"></span><span class="title">Output Devices</span>
+                                    
+								</a>
+                            
+                            
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="assignments.html">Assignments</a></li>
+							<li><a href="finalproject.html">Final Project</a></li>
+							<li><a href="aboutme.html">About Me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<ul><li>add an output device to a microcontroller board you've designed,and program it to do something.</li>
+                            <li>measure the power consumption of an output device.</li></ul>
+                            <hr>
+                            <h3>Introduction</h3>
+                            <p>In computing, an output device is a piece of computer hardware equipment that uses received data and commands from an information processing system in order to perform a task (wiki).In our daily life we using somany output devivces , take a look at our computer speaker is output device ,Monitor is a output device (if it have touch interface the it input device too).In this we are gonna make a output device and i don't want to build something not usefull .so first i checked our fab inventory after that started to deign the PCB. </p>
+                            
+                            <h3>Burglar alarm</h3>
+                            <p>A burglar alarm is an electric device that makes a bell ring loudly if someone tries to enter a building by force.it's a Security alarm .</p>
+                            <img src="images/week12/001.gif" height="500">
+                            <p>So in this week i,am plannig to make my own burglar alarm.</p>
+                            
+                            <h3>Circut Design</h3>
+                            <p>For burglar alarm we need to use Sensor as input device and for output we are using a speaker/buzzer. first we need to choose the sensor , i choosed <b>Hall effect sensor</b> because its output voltage in response to a magnetic field ,so we can measure the magnetic field based on the output voltage and if we can put the sensor and magnet between our door and we can progarmme it to alarm when the magnetic field  is low . and it's very low power and smaller footprint , so that's why i choosed Hall effect sensor.<br>
+                            In our lab we have <b>A1302-Linear Hall-Effect Sensor</b> so first i started to check the datasheet. i found one datasheet :- <a href="https://www.allegromicro.com/~/media/Files/Datasheets/A1301-2-Datasheet.ashx">https://www.allegromicro.com/~/media/Files/Datasheets/A1301-2-Datasheet.ashx</a> based on this it will operate at <b>4.5 to 6.0 V </b> so we don't need to use a voltage regulator.</p>
+                            
+                            <p><b>A1302-Continuous-Time Ratiometric Linear Hall-Effect Sensor</b></p>
+                            <img src="images/week12/004.jpg">
+                            <ul>
+                            <li>Low-noise output</li>
+                            <li>Fast power-on time</li>
+                            <li>Ratiometric rail-to-rail output</li>
+                            <li>4.5 to 6.0 V operation</li>
+                            <li>Solid-state reliability</li>
+                            <li>Factory-programmed at end-of-line for optimum performance</li>
+                            <li>Robust ESD performance </li></ul>
+                            <img src="images/week12/002.jpg"><br><br>
+                            
+                            <p><b>Piezo buzzer</b></p>
+                            <img src="images/week12/003.jpg">
+                            <p>Piezo buzzer is an electronic device commonly used to produce sound. Light weight, simple construction and low price    make it usable in various applications like car/truck reversing indicator, computers, call bells etc.<br>
+                             Piezo buzzer is based on the inverse principle of piezo electricity discovered in 1880 by Jacques and Pierre Curie. It is the phenomena of generating electricity when mechanical pressure is applied to certain materials and the vice versa is also true. Such materials are called piezo electric materials. Piezo electric materials are either naturally available or manmade. Piezoceramic is class of manmade material, which poses piezo electric effect and is widely used to make disc, the heart of piezo buzzer. When subjected to an alternating electric field they stretch or compress, in accordance with the frequency of the signal thereby producing sound.</p>
+                            <img src="images/week12/005.gif">
+                            <p>A piezoelectric disk generates a voltage when deformed (change in shape is greatly exaggerated) .</p>
+                            
+                            <p><b>Magnetic Buzzer</b></p>
+                            <p>In here we are using the Magnetic Buzzer . Like piezo technology, magnetic buzzers are available in transducer and indicator configurations. In a magnetic buzzer, the transistor acts as the driving circuit. Indicators include the transistor, creating a tone when a dc voltage is applied. Transducers lack this transistor, requiring a square wave signal to operate properly.</p>
+                            <img src="images/week12/006.jpg">
+                            <p>Source :- <a href="https://www.cui.com/product-spotlight/piezo-and-magnetic-buzzers">https://www.cui.com/product-spotlight/piezo-and-magnetic-buzzers</a></p>
+                            <img src="images/week12/007.jpg"><br><br>
+                            
+                            <p><b>Testing</b></p>
+                            <p>First i tested the hall-efect sensor and Buzzer with arduino because i don't want to waste the resource and time.first i built sensor module with copper sheet and solder it on a old pcb.</p>
+                            <img src="images/week12/0014.jpg" height="500">
+                             
+                            <p><b>Testing Video</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/gFu8SRU2_eU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <br><br><h3>Circut Design</h3>
+                            <img src="images/week12/0022.png" height="600">
+                            <p>I started to design in Autodek eagle.</p>
+                            <img src="images/week12/008.png" height="500"><br><br>
+                           
+                            <p>after the design i relized buzzer position will cause some problem in Hall-effect sensor also i did't used a Power-switch.so i re-designed the PCB and added a power switch.</p>
+                            <img src="images/week12/009.png" height="600"><br><br>
+                            <p>this is the final board design </p>
+                            
+                            <h4>PCB Milling</h4>
+                            <p>I exported board as Monochrome PNG and milled with Modela</p>
+                            <img src="images/week12/0010.png" height="300"> <img src="images/week12/0011.png" height="300"> <img src="images/week12/0012.png" height="300">
+                            
+                            <p>Completed Milling ,Drilling and Cutting.</p>
+                            <img src="images/week12/0013.jpg"><br><br>
+                            
+                            <h3>Soldering</h3>
+                            <img src="images/week12/0015.jpg"><br><br>
+                            <p>Components</p>
+                            <ul>
+                            <li>ATtiny45 x 1</li>
+                            <li>Buzzer x 1</li>
+                            <li>Hall-effect sensor x 1</li>
+                            <li>0.1 uF Cap x 1</li>
+                            <li>Coil cell battery x 1</li>
+                            <li>Coil cell battery Holder x 1</li>
+                            <li>ISP header x 1</li></ul>
+                            
+                            <img src="images/week12/0016.jpg" height="400"> <img src="images/week12/0017.jpg" height="400">
+                            
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Author :- Salman Faris</font>
+<font color="#95a5a6"> * Docs :- </font><u><font color="#95a5a6">http:&#47;&#47;archive.fabacademy.org&#47;2018&#47;labs&#47;fablabkochi&#47;students&#47;salman-faris&#47;week12.html</font></u><font color="#95a5a6"></font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> *&#47;</font>
+
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">2</font><font color="#434f54">,</font> <font color="#00979c">INPUT_PULLUP</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; </font>
+
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">data</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">&gt;=</font> <font color="#000000">500</font> <font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+<font color="#000000">}</font>
+
+</pre></code></pre> 
+                            
+                            <p>Uploaded the code using <b>FabISP</b>.</p>
+                            
+                            <p><b>Demonstration Video</b></p>
+                            
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Aqp0Zq_OJ4g?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <p>also i attached module in our lab entrance , so we can hear someone enter the room.</p>
+                            
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/o99wMoNA4Zo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><hr>
+                            
+                            <h4>Servo Motor</h4>
+                            <img src="images/week12/0018.jpg" height="500">
+                            <p>servomotor is a rotary actuator or linear actuator that allows for precise control of angular or linear position,</p>
+                            <p><b>What's inside the servo?</b></p>
+                            <p>Inside there is a pretty simple set-up: a small DC motor, potentiometer, and a control circuit. The motor is attached by gears to the control wheel. As the motor rotates, the potentiometer's resistance changes, so the control circuit can precisely regulate how much movement there is and in which direction.</p>
+                            <img src="images/week12/0019.png" height="300"><br><br>
+                            <p>When the shaft of the motor is at the desired position, power supplied to the motor is stopped. If not, the motor is turned in the appropriate direction. The desired position is sent via electrical pulses through the signal wire. The motor's speed is proportional to the difference between its actual position and desired position. So if the motor is near the desired position, it will turn slowly, otherwise it will turn fast. This is called proportional control. This means the motor will only run as hard as necessary to accomplish the task at hand, a very efficient little guy.  </p>
+                            
+                            <p><b>How is the servo controlled?</b></p>
+                            <p>Servos are controlled by sending an electrical pulse of variable width, or pulse width modulation (PWM), through the control wire. There is a minimum pulse, a maximum pulse, and a repetition rate. A servo motor can usually only turn 90° in either direction for a total of 180° movement. The motor's neutral position is defined as the position where the servo has the same amount of potential rotation in the both the clockwise or counter-clockwise direction. The PWM sent to the motor determines position of the shaft, and based on the duration of the pulse sent via the control wire; the rotor will turn to the desired position. The servo motor expects to see a pulse every 20 milliseconds (ms) and the length of the pulse will determine how far the motor turns. For example, a 1.5ms pulse will make the motor turn to the 90° position. Shorter than 1.5ms moves it in the counter clockwise direction toward the 0° position, and any longer than 1.5ms will turn the servo in a clockwise direction toward the 180° position.  </p>
+                            <img src="images/week12/0020.jpg">
+                            <p>When these servos are commanded to move, they will move to the position and hold that position. If an external force pushes against the servo while the servo is holding a position, the servo will resist from moving out of that position. The maximum amount of force the servo can exert is called the torque rating of the servo. Servos will not hold their position forever though; the position pulse must be repeated to instruct the servo to stay in position. </p>
+                            
+                            <p>Note :- I used <b>SoftwareServo.h</b> library ,in order to to work with SoftwareServo we need to modify the header file. for this we have to go into the .h and .cpp files and change "WProgram.h" to Arduino.h. </p>
+                            
+                            
+                            
+                            <h3>CIRCUT DESIGN</h3>
+                            <p>I used <b>ATtiny44</b> for controlling servo.</p>
+                            <img src="images/week12/0021.png" height="600"><br><br>
+                            <p><b>Board Layout</b></p>
+                            <img src="images/week12/0023.png" height="500">
+                            <p>I also FTDI pin's for future purpose.</p>
+                            <img src="images/week12/0024.png" height="400"> <img src="images/week12/0025.png" height="400"> 
+                            <img src="images/week12/0026.png" height="400">
+                            
+                            <h4>Milling & Soldering</h4>
+                            <p><b>Hero shot</b></p>
+                            <img src="images/week12/0027.jpg" height="800"><br><br>
+                            
+                            <h4>Programming</h4>
+                            <p>First i burned <b>Arduino bootloader</b> and after that uploded progarmme using FabISP.First i used Arduino <b>Servo.h</b> library i can't any output from the servo because we don't have an 16-bit timer in my servo port. after googling i found <b>Software Servo</b> (SoftwareServo.h) after that it's worked great , and i did't used any Voltage Regulator so i can only drive 5v relay.<br>The Software Servo Library can drive servos on all of your pins simultaneously. The API is patterned after the wiring.org servo library but the code is different. You are not limited to 8 servos, but you must call the SoftwareServo::refresh() method at least once every 50ms or so to keep your servos updating.(Source:- <a href="https://playground.arduino.cc/ComponentLib/Servo">https://playground.arduino.cc/ComponentLib/Servo</a></p>
+                            
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">SoftwareServo</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#000000">SoftwareServo</font> <font color="#000000">servo</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font> 
+ &nbsp;<font color="#000000">servo</font><font color="#434f54">.</font><font color="#d35400">attach</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font><font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#00979c">int</font> <font color="#000000">pos</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#000000">pos</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">pos</font> <font color="#434f54">&lt;</font> <font color="#000000">90</font><font color="#000000">;</font> <font color="#000000">pos</font> <font color="#434f54">+=</font> <font color="#000000">1</font><font color="#000000">)</font> <font color="#000000">{</font> 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">servo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">pos</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">SoftwareServo</font><font color="#434f54">:</font><font color="#434f54">:</font><font color="#000000">refresh</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> 
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#000000">pos</font> <font color="#434f54">=</font> <font color="#000000">90</font><font color="#000000">;</font> <font color="#000000">pos</font><font color="#434f54">&gt;=</font><font color="#000000">1</font><font color="#000000">;</font> <font color="#000000">pos</font><font color="#434f54">-=</font><font color="#000000">1</font><font color="#000000">)</font> <font color="#000000">{</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">servo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">pos</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">SoftwareServo</font><font color="#434f54">:</font><font color="#434f54">:</font><font color="#000000">refresh</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> 
+<font color="#000000">}</font>
+
+</pre></code></pre>
+                            
+                            <p><b>Demonstration Video</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/1JGDxNXBM9Q?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <hr>
+                            
+                            <h4>Audio Amplifier</h4>
+                            <p>An audio amplifier is an electronic device that increases the strength (amplitude) of audio signals that pass through it. An audio amplifier amplifies low-power audio signals to a level which is suitable for driving loudspeakers<br>In here am using Texas Instruments <b>LM4861</b> Audio Amplifier.it's a 8-Lead SOIC pakage.The LM4861 is a bridge-connected audio power amplifier capable of delivering 1.1W of continuous average power to an 8Ω load with 1% THD+N using a 5V power supply</p>
+                            <p><b>FEATURES</b></p>
+                            <ul>
+                            <li>No output coupling capacitors, bootstrap capacitors, or snubber circuits are necessary</li>
+                            <li>Small Outline (SOIC) packaging</li>
+                            <li>Compatible with PC power supplies</li>
+                            <li>Thermal shutdown protection circuitry</li>
+                            <li>Unity-gain stable</li>
+                            <li>External gain configuration capability</li></ul>
+                            
+                            <p><b>KEY SPECIFICATIONS</b></p>
+                            <ul>
+                            <li>THD+N for 1kHz at 1W continuous average output power into 8Ω 1.0% (max)</li>
+                            <li>Output power at 10% THD+N at 1kHz into 8Ω 1.5 W (typ)</li>
+                            <li>Shutdown Current 0.6µA (typ)</li></ul>
+                            
+                            <p><b>Connection Diagram</b></p>
+                            <img src="images/week12/0028.jpg">
+                            
+                            <p><b>Typical Application</b></p>
+                            <p>I used Typical Application diagram from the datasheet (source:- <a href="http://www.ti.com/lit/ds/symlink/lm4861.pdf">http://www.ti.com/lit/ds/symlink/lm4861.pdf</a></p>
+                            <img src="images/week12/0029.jpg">
+                            
+                            <p>I started to design in Eagle, in our lab we don't have an <b>0.33 uf </b> capacitor so i used four <b>0.1 uf</b> also used two <b>10 ohm</b> resistor for <b>20 ohm</b>.<br>
+                            for capacitor we need to make it parallel connection to get the value.</p>
+                            <img src="images/week12/0030.gif">
+                            <p>But in case of Resistor we need to make it Series to get the tottal resistance.</p>
+                            <img src="images/week12/0031.gif">
+                            
+                            <h3>Circuit Design</h3>
+                            <img src="images/week12/0032.png" height="600"><br><br>
+
+                            <p><b>board layout</b></p>
+                            <img src="images/week12/0033.png" height="600">
+                            
+                            <p><b>Milling and Soldering</b></p>
+                            <img src="images/week12/0034.png" height="300"> <img src="images/week12/0035.png" height="300"> <img src="images/week12/0036.png" height="300">
+                            <p>Milled with 1/64 bit and drilled and cuted with 1/32 bit.</p>
+                            <p><b>Hero shot</b></p>
+                            <img src="images/week12/0037.jpg" height="700">
+                            
+                             <p><b>Demonstration Video</b></p>
+                            
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/iALeb55kQQY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <hr>
+                            <h3>Group Assignment</h3>
+                            <p>In this week group assignment was measure the power consumption of  output device that we used.i tested one by one and i used <b>UNI-T UT61A</b> multimeter to measure the power consumption. </p>
+                            <ul>
+                            <li><b>Buzzer</b></li>
+                            <img src="images/week12/003.jpg" height="100">
+                            <p>In this <a href="https://www.jameco.com/Jameco/Products/ProdDS/1956696.pdf"><b>datasheet</b></a> it shows the operating power is <b>3-6V DC / 25mA </b> , but we got around <b>19mA </b> in <b>5V</b> .</p>
+                            <img src="images/week12/0038.jpg" height="500"><br><br>
+                            
+                            <li><b>Servo Motor</b></li>
+                            <img src="images/week12/0018.jpg" height="100">
+                            <p>In this <a href="http://akizukidenshi.com/download/ds/towerpro/SG90.pdf"><b>datasheet</b></a> i did't got any information about the power consumption,so i measured with my multimeter.but to measure the current consumed by a servo you need to connect an oscilloscope across a low value resistor in series with the servo ground. 1 ohm is the lowest commonly available value but this may be too high and disrupt the operation of the servos, so 1/2 ohm or lower is recommended. You can make a 1/2 ohm resistor by connecting two 1 ohm resistors in parallel as shown in this diagram,  for this purpose i used 100 ohm for this purpose.</p> 
+                            <img src="images/week12/0039.jpg">
+                            <p>In here i used <b>100 ohm Current Shunt Resistor</b>,these resistors are low resistance precision resistors used to measure AC or DC electrical currents by the voltage drop those currents create across the resistance. <b>V = I × R</b>
+                            </p>
+                            <img src="images/week12/0040.jpg" height="400">
+                            <p>I got around <b>75mA</b> in Multimeter</p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/2tC-66CufC4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                                
+                            <li><b>16x2 LCD Display</b></li>
+                            <p>16×2 LCD is named so because; it has 16 Columns and 2 Rows. There are a lot of combinations available like, 8×1, 8×2, 10×2, 16×1, etc.All the above mentioned LCD display will have 16 Pins and the programming approach is also the same and hence the choice is left to you. Below is the Pinout and Pin Description of 16x2 LCD Module:</p>
+                            <img src="images/week12/0041.jpg">
+                            <p>I connecte <b>shunt resistor </b> across the Groud that is <b>VSS</b> pin , and connected <b>VDD</b> directly to the 5v vcc and measured current using a multimeter.</p>
+                            <img src="images/week12/0042.jpg" height="500">
+                            <p>and i got around <b>79.8 uA</b>.but it's just the flow of voltage for Enable the LCD we need to HIGH the <b>E-Enable</b> pin of LCD , after i got around <b>513 uA</b>.</p>
+                            <img src="images/week12/0044.jpg" height="500"><br><br>
+                            <p><b>Video</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Hva22vBFIzo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            
+                            
+                            </ul>
+                            <hr>
+                            <h3>Design Files</h3>
+                            <ul>
+                            <li><a href="resource/week12/BurglarAlarm.zip">Burglar alarm</a></li>  
+                            <li><a href="resource/week12/ServoDriver.zip">Servo Motor</a></li>
+                            <li><a href="resource/week12/AudioAMP.zip">Audio Amplifier</a></li>
+                            </ul>
+                            
+                            
+
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+
+
+
+
+
+                            
+       
+                            
+                        <br><br><br>  
+                        <center><h3><a href="week11.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week13.html" align="right">Next&gt;  </a></h3></center>
+						</div>
+					</div>
+                
+                
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="https://www.github.com/salmanfarisvp" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="mailto:farissalmannbr@gmail.com" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+        
+        
+        
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
