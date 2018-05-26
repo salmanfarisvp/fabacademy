@@ -109,6 +109,325 @@
                             
                             <p><b>I2C - A Brief History</b></p>
                             <p>I2C was originally developed in 1982 by Philips for various Philips chips. The original spec allowed for only 100kHz communications, and provided only for 7-bit addresses, limiting the number of devices on the bus to 112 (there are several reserved addresses, which will never be used for valid I2C addresses). In 1992, the first public specification was published, adding a 400kHz fast-mode as well as an expanded 10-bit address space. Much of the time (for instance, in the ATMega328 device on many Arduino-compatible boards) , device support for I2C ends at this point. There are three additional modes specified: fast-mode plus, at 1MHz; high-speed mode, at 3.4MHz; and ultra-fast mode, at 5MHz.(source :- sparkfun)</p>
+                            <hr>
+                            
+                            <p>So we can start with <B>I2C</B> Communication Protocol, before milling a new board i tried with my existing <b>Hello Echo</b> and my friend jacob board.my plan is to control the <b>slave</b> led light using the <b>master</b> board, so here am using <b>Hello echo </b> board as my <b>Master</b> because it have a on-board button and i used my friend jacob board as slave because it have on-board led. </p>
+                            <img src="images/week14/007.jpg" >
+                            <p>In <b>ATtiny44</b> datasheet we can see the <b>Two-wire Mode Operation, Simplified Diagram</b> in page number 122. </p>
+                            <img src="images/week14/006.png">
+                            <p>In here we see a <b>Pull-Up</b> resistor between Slave and Master <b>SCK</b> and <b>SDA</b>. it's because  the I2C bus drivers are “open drain”, meaning that they can pull the corresponding signal line low, but cannot drive it high. Thus, there can be no bus contention where one device is trying to drive the line high while another tries to pull it low, eliminating the potential for damage to the drivers or excessive power dissipation in the system. Each signal line has a pull-up resistor on it, to restore the signal to high when no device is asserting it low.so here i used two <b>10 k</b> SMD resistor .</p>
+                            <img src="images/week14/008.jpg">
+                            <p>For the pull-up resistor i just used copper sheet and a male header.and i used  breadboard for the connection. </p>
+                            <img src="images/week14/009.jpg" height="400"> <img src="images/week14/0010.jpg" height="400">
+                            <p>It's look like mess , but believe me it will work. here i used <b>ISP</b> pin <b>MOSI</b> for <b>SDA</b> and <b>SCL</b> for <b>SCK</b>.</p>
+                            <img src="images/week14/0011.png">
+                            <p>First i tried with Arduino offical <b>Wire.h</b> I2C library ,but it only throw some compailation error ,after googling and researching i got <b>TinyWire.h</b> library. it's not worked that i expected next i used a new <b>ATtiny board manager </b> called <b>ATTinyCore</b> here is the git repo :- <a href="https://github.com/SpenceKonde/ATTinyCore">https://github.com/SpenceKonde/ATTinyCore</a> . and agin i used the <b>Wire.h</b> library and the compailation was succeed .and the new board manager will gave us more control in our <b>ATtiny Board</b>.</p>
+                            <img src="images/week14/0012.png" height="400"> <img src="images/week14/0013.png" height="400">
+                            <p>first one is the new <b>ATtiny Core</b> and second one is the <b>ATtiny</b> board definition ,and we can see we will get more control in microcontroller by using the <b>ATtinyCore</b> board definition. </p>
+                            
+                            <p><b>Code</b></p>
+                          
+                            <ul>
+                            <li><b>Master Code</b></li>
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+<font color="#5e6d03">#include</font><font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">button</font> <font color="#000000">A2</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">button</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">data</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">data</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">button</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">8</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">8</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+
+</pre>
+
+                            </code></pre>
+                                
+                            <li><b>Slave code</b></li>
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">led</font> <font color="#000000">A3</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">8</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">onReceive</font><font color="#000000">(</font><font color="#000000">receiveEvent</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">led</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">receiveEvent</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">howMany</font><font color="#000000">)</font> <font color="#000000">{</font>
+
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">x</font> <font color="#434f54">=</font> <font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">read</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+                            </code></pre>
+                            <p>here we used <b>receiveEvent</b> as a <b>event</b> so here the function that executes whenever data is received from master. </p>
+                                
+                            </ul>
+                            
+                            <p><b>Demo Video</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/7kXB7ZIKUk8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <p>Now we can design new <b>Master</b> and <b>Slave</b> board.</p>
+                            <hr>
+                            <h3>PCB Design </h3>
+                            <p><b>Master</b></p>
+                            <p>For the <b>I2C</b> network we need to Design Two boards . one is <b>Master Board</b> and another one is <b>Slave</b> board.first i designed Master board with <b>ATtiny44</b> .</p>
+                            <img src="images/week14/0014.png" >
+                            <p> here i used <b>ATtiny44</b> with <b>20 Mhz</b> resonator. and also added <b>10 k</b> ohm resistor between <b>MOSI (SDA)</b> and <b>SCK</b>.</p>
+                            <img src="images/week14/0016.png">
+                            <p>This is my board layout .after that i exported the image for milling and cutting. </p>
+                            <img src="images/week14/m_top.png" height="400"> <img src="images/week14/m_cut.png" height="400"><br><br>
+                            
+                            <p><b>Slave</b></p>
+                            <p>For the <b>I2C</b> slave i used <b>ATtiny44</b> with <b>20 mhz</b> resonator and two <b>LED</b>'s. i milled two slaves with same config.</p>
+                            <img src="images/week14/0014.png">
+                            <p>In the slave i also added <b>10 k </b> pull-up resistor for <b>MOSI (SDA)</b> and <b>SCK</b>.</p>
+                            <img src="images/week14/0015.png" height="500">
+                            <p>This is my board layout .after that i exported the image for milling and cutting. </p>
+                            <img src="images/week14/s_top.png" height="400"> <img src="images/week14/s_cut.png" height="400">
+                            
+                            <hr>
+                            
+                            <h3>Milling and Soldering</h3>
+                            <p><b>Hero Shot</b></p>
+                            <img src="images/week14/0018.jpg" width="100%">
+                            
+                            <hr>
+                            <h3>Progarmming</h3>
+                            <p>I used <b>Fab ISP</b> to programme the Master and Slave boards.</p>
+                            <p><b>Master code</b></p>
+                            <pre>
+                            <code>
+<pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Name :- ATtiny44 I2C Master </font>
+<font color="#95a5a6"> * Author :- &nbsp;Salamne Faris</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> *&#47;</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+<font color="#5e6d03">#include</font><font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+<font color="#5e6d03">#define</font> <font color="#000000">Rx</font> <font color="#000000">1</font>
+<font color="#5e6d03">#define</font> <font color="#000000">Tx</font> <font color="#000000">0</font>
+<b><font color="#d35400">SoftwareSerial</font></b> <font color="#000000">myserial</font><font color="#000000">(</font><font color="#000000">Rx</font><font color="#434f54">,</font> <font color="#000000">Tx</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">char</font> <font color="#000000">d</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">available</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#434f54">&gt;</font> <font color="#000000">0</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">d</font> <font color="#434f54">=</font> <font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">read</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">==</font> <font color="#00979c">&#39;1&#39;</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;send :- &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">data</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">==</font> <font color="#00979c">&#39;2&#39;</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;send :- &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">data</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">==</font> <font color="#00979c">&#39;3&#39;</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;send :- &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">data</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">data</font> <font color="#434f54">==</font> <font color="#00979c">&#39;4&#39;</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">beginTransmission</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">4</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">endTransmission</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;send :- &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">data</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+
+</pre>
+                  </code></pre>
+                            <p>Here i used <b>Address 1</b>for slave one and <b>Address 2</b> for slave 2 . and <p>here we used <b>receiveEvent</b> as a <b>event</b> so here the function that executes whenever data is received from master. </p></p>
+                            
+                            <p><b>Slave One Code</b></p>
+                            <pre>
+                            <code>
+<pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Name :- ATtiny44 I2C Slave One </font>
+<font color="#95a5a6"> * Author :- &nbsp;Salamne Faris</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> *&#47;</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">int</font> <font color="#000000">led1</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font> 
+<font color="#00979c">int</font> <font color="#000000">led2</font> <font color="#434f54">=</font> <font color="#000000">A1</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">onReceive</font><font color="#000000">(</font><font color="#000000">receiveEvent</font><font color="#000000">)</font><font color="#000000">;</font> 
+ &nbsp;
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+
+<font color="#00979c">void</font> <font color="#000000">receiveEvent</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">howMany</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">x</font> <font color="#434f54">=</font> <font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">read</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font><font color="#000000">2</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;
+<font color="#000000">}</font>
+
+</pre>
+                            
+                            </code></pre>
+                        
+                         <p><b>Slave Two Code</b></p>
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Name :- ATtiny44 I2C Slave two </font>
+<font color="#95a5a6"> * Author :- &nbsp;Salamne Faris</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> *&#47;</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">int</font> <font color="#000000">led1</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font> 
+<font color="#00979c">int</font> <font color="#000000">led2</font> <font color="#434f54">=</font> <font color="#000000">A1</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">onReceive</font><font color="#000000">(</font><font color="#000000">receiveEvent</font><font color="#000000">)</font><font color="#000000">;</font> 
+ &nbsp;
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+
+<font color="#00979c">void</font> <font color="#000000">receiveEvent</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">howMany</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">x</font> <font color="#434f54">=</font> <font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">read</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">x</font> <font color="#434f54">==</font><font color="#000000">2</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led1</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">led2</font><font color="#434f54">,</font><font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;
+<font color="#000000">}</font>
+
+</pre>
+                            </code></pre>
+                         <hr>
+                        
+                          <h4>Slave master Connection</h4>
+                        <p>I used <b>2x2</b> Pin header with Rainbow cable to make a communication Bus.</p>
+                        <img src="images/week14/0019.jpg" width="100%">
+                        <hr>
+                        <h4>Demo</h4>
+                        <p>First i uploaded code for turn on all the led in slave.</p>
+                        <img src="images/week14/0020.jpg" width="100%">
+                        
+                        <p><b>Video</b></p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/5A-WyP3OZh8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <hr>
+                        <h4>Problems</h4>
+                        <p>I uploaded my code to slave and master board and it's work perfectly but after i changed one of my slave code and uploaded  it throwed a error.</p>
+                        <img src="images/week14/0021.png" width="100%">
+                        <p>I try to <b>override</b> using <b>-F</b>. </p>
+                        <img src="images/week14/0022.png" width="100%">
+                        <p>now we know problem , it was the <b>Invalid Device Signature</b> . i googled about the error and did't not found any solution and in <b>AVR Freaks </b> some one have the same problem ,he solved by just heating the ATtiny44 and ISP pin , so it's due to <b>loosed/cold solder</b> ,so i heated the solder on the ATTiny and ISP Pin header.Now problem solved . </p>
+                        
+                        <hr>
+                        <h4>Resource File</h4>
+                        <ul>
+                        <li><a href="resource/week14/Master.zip">I2C Master Design File </a></li>
+                        <li><a href="resource/week14/Slave.zip">I2C Slave Design File   </a></li></ul>
+                        
+                        
+                        
+                        
+                            
+                            
+                            
 
                             
                             

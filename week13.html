@@ -199,7 +199,131 @@
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/5vnlzivrh8A?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             
                             <hr>
+                             <h4>Resource File</h4>
+                             <ul>
+                             <li><a href="resource/week13/LED.apk">Android LED Application <b>.apk</b> file. </a></li>
+                            </ul>
                             
+                            <hr>
+                           <h4>processing</h4>
+                            <p>Processing is an open-source computer programming language and integrated development environment (IDE) built for the electronic arts, new media art, and visual design communities with the purpose of teaching non-programmers the fundamentals of computer programming in a visual context. The Processing language builds on the <b>Java</b> language, but uses a simplified syntax and a <b>graphics user interface</b>.</p>
+                            <p>In here i,am utilizing <b>Termistor</b> of my <b>Sense</b> board , and my plan is to make a <b>Temprature Graph</b> using the Processing .so i used <b>controlP5</b> it's a GUI (graphical user interface) <b>library</b> for processing and it's very easy to use.and to get data from my board to <b>Processing </b> i used inbuilt <b>serial</b> library.</p>
+                            <img src="images/week13/0013.jpg" >
+                            <p>I used <b>10k Thermistor </b> to measure the temprature and also added a <b>Pull-up</b> resistor .</p>
+                            
+                            <h4>Programming</h4>
+                            <p>I used arduino <b>Serial</b> to print out the temprature value.</p>
+                            <pre>
+                            <code>
+                            <pre>
+<font color="#95a5a6">&#47;*</font>
+<font color="#95a5a6"> * Project :- ATtiny44 Temprature Sensor using 10k Thermistor </font>
+<font color="#95a5a6"> * Author :- Salman Faris</font>
+<font color="#95a5a6"> * </font>
+<font color="#95a5a6"> *&#47;</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">math</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">SoftwareSerial</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+
+<font color="#5e6d03">#define</font> <font color="#000000">RX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">9</font> &nbsp;&nbsp;
+<font color="#5e6d03">#define</font> <font color="#000000">TX</font> &nbsp;&nbsp;&nbsp;<font color="#000000">10</font> &nbsp;&nbsp;
+
+<b><font color="#d35400">SoftwareSerial</font></b> <font color="#000000">myserial</font><font color="#000000">(</font><font color="#000000">RX</font><font color="#434f54">,</font> <font color="#000000">TX</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+
+
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PA0</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">double</font> <font color="#000000">Thermister</font><font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">RawADC</font><font color="#000000">)</font> <font color="#000000">{</font> &nbsp;<font color="#434f54">&#47;&#47;Function to perform the fancy math of the Steinhart-Hart equation</font>
+ &nbsp;<font color="#00979c">double</font> <font color="#000000">Temp</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">Temp</font> <font color="#434f54">=</font> <font color="#d35400">log</font><font color="#000000">(</font><font color="#000000">(</font><font color="#000000">(</font><font color="#000000">10240000</font> <font color="#434f54">&#47;</font> <font color="#000000">RawADC</font><font color="#000000">)</font> <font color="#434f54">-</font> <font color="#000000">10000</font><font color="#000000">)</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">Temp</font> <font color="#434f54">=</font> <font color="#000000">1</font> <font color="#434f54">&#47;</font> <font color="#000000">(</font><font color="#000000">0.001129148</font> <font color="#434f54">+</font> <font color="#000000">(</font><font color="#000000">0.000234125</font> <font color="#434f54">+</font> <font color="#000000">(</font><font color="#000000">0.0000000876741</font> <font color="#434f54">*</font> <font color="#000000">Temp</font> <font color="#434f54">*</font> <font color="#000000">Temp</font> <font color="#000000">)</font><font color="#000000">)</font> <font color="#434f54">*</font> <font color="#000000">Temp</font> <font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">Temp</font> <font color="#434f54">=</font> <font color="#000000">Temp</font> <font color="#434f54">-</font> <font color="#000000">273.15</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">return</font> <font color="#000000">Temp</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">temp</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">PA0</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">temp</font> <font color="#434f54">=</font> <font color="#000000">Thermister</font><font color="#000000">(</font><font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">myserial</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">temp</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre>
+                            </code></pre>
+                            <p> we want to have the temperature reading, not just a resistance , so i used <b> Steinhart-Hart equation</b> to get the <b>temperature</b> value.actually we need to calibrate the temprature sensor in-order to get the right value, i used the genral <b>coefficients</b> for this .</p>
+                            <img src="images/week13/0014.png">
+                            <p>this equation is fairly complex and i used the simplified B parameter equation.(source:- <a href="https://en.wikipedia.org/wiki/Thermistor">https://en.wikipedia.org/wiki/Thermistor</a>.</p>
+                            <img src="images/week13/0015.png">
+                            <p>and is used arduino <b>Serial.write</b> function insted of <b>Serial.println</b> beacause i can't read the data from the other side using the <b>Print</b> beacuse it's send <b> ASCII characters</b>so we can read easily but for passing the value to <b>processing</b> we need to make it <b>bytes</b> so that's why i used <b>Serial.write</b> .</p>
+                            
+                            <p><b>Processing Code</b></p>
+                            <pre>
+                            <code>
+                            <html><body><pre>
+<span style="color: #33997E;">import</span> processing.serial.*;
+<span style="color: #33997E;">import</span> controlP5.*;
+
+Serial&nbsp;myPort;&nbsp;&nbsp;
+<span style="color: #E2661A;">int</span> val;      
+
+ControlP5&nbsp;cp5;&nbsp;<span style="color: #666666;">// </span>
+Chart&nbsp;myChart;
+
+<span style="color: #33997E;">void</span> <span style="color: #006699;"><b>setup</b></span>() 
+{
+&nbsp;&nbsp;&nbsp;<span style="color: #006699;">size</span>(800, 400);
+&nbsp;&nbsp;cp5&nbsp;=&nbsp;<span style="color: #33997E;">new</span> ControlP5(<span style="color: #33997E;">this</span>);
+&nbsp;&nbsp;myChart&nbsp;=&nbsp;cp5.addChart(<span style="color: #7D4793;">&quot;Temprature is &quot;</span>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setPosition(50,&nbsp;50)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setSize(700,&nbsp;300)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setRange(20,&nbsp;50)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setView(Chart.<span style="color: #718A62;">LINE</span>) <span style="color: #666666;"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setStrokeWeight(1.5)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setColorCaptionLabel(<span style="color: #006699;">color</span>(40))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;
+
+&nbsp;&nbsp;myChart.addDataSet(<span style="color: #7D4793;">&quot;incoming&quot;</span>);
+&nbsp;&nbsp;myChart.setData(<span style="color: #7D4793;">&quot;incoming&quot;</span>, <span style="color: #33997E;">new</span> <span style="color: #E2661A;">float</span>[100]);
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;myPort&nbsp;=&nbsp;<span style="color: #33997E;">new</span> Serial(<span style="color: #33997E;">this</span>, <span style="color: #7D4793;">&quot;COM10&quot;</span>, 9600);
+&nbsp;&nbsp;
+&nbsp;&nbsp;cp5&nbsp;=&nbsp;<span style="color: #33997E;">new</span> ControlP5(<span style="color: #33997E;">this</span>);
+&nbsp;&nbsp;
+}
+
+<span style="color: #33997E;">void</span> <span style="color: #006699;"><b>draw</b></span>()
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #006699;">background</span>(200);
+&nbsp;&nbsp;<span style="color: #669900;">if</span> ( myPort.available() &gt; 0) 
+&nbsp;&nbsp;{&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;=&nbsp;myPort.read();
+&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;<span style="color: #006699;">println</span>(val);
+&nbsp;&nbsp;&nbsp;&nbsp;myChart.push(<span style="color: #7D4793;">&quot;incoming&quot;</span>, val);
+}
+
+</pre></body></html>
+                            </code></pre><hr>
+                            
+                            
+                            <h4>Demo</h4>
+                            <img src="images/week13/0016.png" width="100%" >
+                            
+                            <p><b>Video</b></p>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/-SOm6vUQjoY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            
+                            
+                            
+                        
+                        
                             
                             
                             
