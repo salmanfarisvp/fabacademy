@@ -54,7 +54,7 @@
                             <p>I have some experinece working with microcontroller's and also  This week Professor Neil gave us a over-all Introduction about basic electroincs and Design . In this week wee need to redraw Echo hello-world not just clone it wee need to add button's and led's our own. Am very excited .</p>
                             
                             <h4>Echo Board</h4>
-                            <img src="images/week7/hello1.jpg" height="400" > <img src="images/week7/hello2.png" height="400">
+                            <center>><img src="images/week7/hello1.jpg" height="400" > <img src="images/week7/hello2.png" height="400"></center>
                             <p>We need to redraw the Echo Board and also need to add a button and led.This Board is powerd by An <b>Atmel ATtiny44</b>.</p>
                             
                             <h4>PCB Designing</h4>
@@ -73,131 +73,132 @@
                             <li>FTDI header x1</li></ul>
                             
                             <p>First of all i need to add the library of the componets , in here we have a git repo that include almost all the library that used in fablab.</p>
-                            <img src="images/week7/001.png" height="600" >
+                            <center><img src="images/week7/001.png" height="600" ></center>
                             <p>there is no download option for single file github , so i choosed <b>View Raw</b> to get all the code.</p>
-                            <img src="images/week7/002.png" height="500">
+                            <center><img src="images/week7/002.png" height="500"></center>
                             <p>This is acutally a <b>XML</b>  file that describe the dimmension of the componets.then i copy all the code and created  a file named <b>fab.lbr</b> and pasted there.</p>
                             <p>here you can downlaod the Fab Library  <a href="https://github.com/Academany/FabAcademany-Resources/blob/master/files/fab.lbr">fab.lbr</a></p>
                             <p>I started with creating a Project in Eagle</p>
-                            <img src="images/week7/004.png" height="500">
+                            <center><img src="images/week7/004.png" height="500"></center>
                             <p>Login with with your account will help you to keep upadate your projects and libray in other machines too.</p>
-                            <img src="images/week7/005.png">
+                            <center><img src="images/week7/005.png"></center>
                             <p>Created a project by <b>File </b> => <b>New</b> => <b>Project</b></p>
-                            <img src="images/week7/006.png" height="500">
+                            <center><img src="images/week7/006.png" height="500"></center>
                             <p>After the Project creation wee need to create a Schematic Board layout.</p><br>
                             <p>After i added library on the eagle.</p>
-                            <img src="images/week7/007.png">
+                            <center><img src="images/week7/007.png"></center>
                             <p>First open <b>Library manager</b> .</p>
-                            <img src="images/week7/008.png">
+                            <center><img src="images/week7/008.png"></center>
                             <p>On the following window click <b>Browse</b> then select our Library file from it's location and click <b>open</b>.  </p>
-                            <img src="images/week7/009.png">
+                            <center><img src="images/week7/009.png"></center>
                             <p>Next we needed to update the library by clicking the <b>Update all</b> option.</p>
                             <p>We need to check that the library is updated or not , but seaching the componets list.</p>
-                            <img src="images/week7/0010.png">
+                            <center><img src="images/week7/0010.png"></center>
                             <p>Type <b>add</b> on the command Section to add componets to our Schematics.</p>
-                            <img src="images/week7/0011.png">
+                            <center><img src="images/week7/0011.png"></center>
                             <p>if we updated the library we can see like this , this means we are updated the library.</p>
                             <br>
                             <p>Now eagle setup is complete , we can now add componets to schematic.</p>
-                            <img src="images/week7/0014.png">
+                            <center><img src="images/week7/0014.png"></center>
                             <p>First i added <b>ATtiny44</b>, importent :- you need to selecet the right componet that you have in your inventory beacsue each of them look similar in schematic but when comes to pad length and distance and footprints it's huge difference. </p>
-                            <img src="images/week7/0015.png" height="500">
+                            <center><img src="images/week7/0015.png" height="500"></center>
                             <p>place it anywhere on the schematics you like.</p>
-                            <img src="images/week7/0016.png">
+                            <center><img src="images/week7/0016.png"></center>
                             <p>Next,i added the Resistor and Diode</p>
-                            <img src="images/week7/0017.png">
+                            <center><img src="images/week7/0017.png"></center>
                             <p>added and Placed all the necessary componets .</p>
-                            <img src="images/week7/0018.png" height="500" >
+                            <center><img src="images/week7/0018.png" height="500" ></center>
                             <p>Next we need to connect the componet each other.</p>
-                            <img src="images/week7/0021.png">
+                            <center><img src="images/week7/0021.png"></center>
                             <p>I used label tool label my componets so i can easly connect them together. </p>
-                            <img src="images/week7/0022.png">
+                            <center><img src="images/week7/0022.png"></center>
                             <p>When your are lable the same name with other componet , we get a pop-up Warning window show's the connection,and  it will internally connect </p><br>
                         
-                            <img src="images/week7/0023.png">
+                            <center><img src="images/week7/0023.png"></center>
                             <p>First i draw the basic Echo-board and next i additinaly added an <b>LED</b> and <b>Push Button</b> , on the PCB</p>
                             <p><b>Button</b> part </p>
-                            <img src="images/week7/0046.png">
+                            <center><img src="images/week7/0046.png"></center>
                             <p>In the button Section i added a <b>Pull-down</b> resistor , without the pull-down resistor we can't get the acutal value of the button.</p>
-                            <img src="images/week7/0024.png">
+                            <center><img src="images/week7/0024.png"></center>
                             <p>In my schematic <b>R2</b> is one pull-down to groud.</p>
                             <p><b>LED</b> part</p>
-                            <img src="images/week7/0047.png"><br> <br>
+                            <center><img src="images/week7/0047.png"></center><br> <br>
                             
                             
                             <h4>Completed Schematic</h4>
-                            <img src="images/week7/0044.png">
-                            <img src="images/week7/PCB.png">
+                            <center><img src="images/week7/0044.png" width="100%"></center>
+                            <center><img src="images/week7/PCB.png" width="100%"></center>
                             <p>next i need to make the PCB board , i can be Genrate by Clicking <b>SCH BRD</b> icon on the eagle tool bar.</p>
                             <img src="images/week7/0048.png">
                             <p>continue with following pop-up window.</p>
-                            <img src="images/week7/0049.png">
+                            <center><img src="images/week7/0049.png"></center>
                             <p>eagle will open new window for the <b>Board layout</b>.</p>
-                            <img src="images/week7/0045.png">
+                            <center><img src="images/week7/0045.png"></center>
                             <p>before set the PCB we need to change some defult settigs</p>
                             <br>
                             <h4>PCB Designing Rules</h4>
                             <p>Before routing the board, the most important step you have to do is set the Design rules. The design rules relate to the trace width, the clearance between the traces etc. you can open Design rules from the toolbar => <b>Edit</b>  => <b>Designing rules </b></p>
-                            <img src="images/week7/0029.png" height="500">
+                            <center><img src="images/week7/0029.png" height="500"></center>
                             <p>Open the designing rules.</p>
-                            <img src="images/week7/0030.png">
+                            <center><img src="images/week7/0030.png"></center>
                             <p>First we need to set the <b>Clearnce </b>, in default it' comes with the <b>6 mil</b> in here fab we are using <b>1/64 </b> bit for milling so here the trace will come around <b>16 mill</b>.</p>
-                            <img src="images/week7/0031.png">
+                            <center><img src="images/week7/0031.png"></center>
                             <p>Next we need to take care the <b>Distance</b> ,it default value is <b>40 mil</b> so in here i set the value to corresponding to our bit that is <b>16 mil</b>.</p>
-                            <img src="images/week7/0032.png">
-                            <img src="images/week7/0033.png">
+                            <center><img src="images/week7/0032.png"></center>
+                            <center><img src="images/week7/0033.png"></center>
                             <p>Next we need to set the Size of the Copper Trace , in dafult <b>6mil</b>, and we need to make it <b>16 mil</b>.</p>
-                            <img src="images/week7/0034.png">
-                            <img src="images/week7/0050.png">
+                            <center><img src="images/week7/0034.png"></center>
+                            <center><img src="images/week7/0050.png"></center>
                             <p>I also used the <b>ERC- Electronic rule checker</b> </p>
-                            <img src="images/week7/0063.png">
+                            <center><img src="images/week7/0063.png"></center>
                             <p>in here we can see , there is no error in my design , but have few warnnings , that's due to i did't give the proper value to componets.this is not big deal if the footprint is same. we can approve all now. </p>
                             <p>So now set the all the design rules we need to create the PCB board using the Modela Milling machine.</p>
+                            <hr>
                             <h4>PCB Board</h4>
                             <p>We need to place the componets to place </p>
-                            <img src="images/week7/0055.png" height="500">  
+                            <center><img src="images/week7/0055.png" height="500"></center>  
                             <p>I used <b>Auto-router</b> to Route my PCB Trace Line</p>
-                            <img src="images/week7/0056.png" height="500">
+                            <center><img src="images/week7/0056.png" height="500"></center>
                             <p>In default it's comes with Bottom and Top layer , but here we are using One layer so used Top layer only.</p>
-                            <img src="images/week7/0057.png" height="500">
+                           <center><img src="images/week7/0057.png" height="500"></center> 
                             <p>Auto-route will suggest somany routes , we can choose one that's suitable us.</p>
-                            <img src="images/week7/0058.png" height="500">
+                            <center><img src="images/week7/0058.png" height="500"></center>
                             <p>I used the first 100% Routed one.</p>
                             <p>Now we need to export the mill trace and cut trace in <b>.png</b> format.</p>
-                            <img src="images/week7/0059.png" height="500">
+                            <center><img src="images/week7/0059.png" height="500"></center>
                             <p>I used the <b>Layer</b> tool and make the <b>top layer</b> visible and hide all other layers.because we only need to mill the trace/path .</p>
-                            <img src="images/week7/0060.png" height="500">
+                            <center><img src="images/week7/0060.png" height="500"></center>
                             <p>I export image by <b>File</b> => <b>Image</b>.</p>
-                            <img src="images/week7/0062.png" height="500">
+                            <center><img src="images/week7/0062.png" height="500"></center>
                             <p>next we need to export the <b>cut trace</b>, so in my lab we are using <b>1/32</b> so we need to make the cut width to <b>32 mil</b>. </p>
-                            <img src="images/week7/0061.png">
+                            <center><img src="images/week7/0061.png"></center>
                             <p>Now we are completed </p><br>
-                            
+                            <hr>
                             <h4>Trace and Cut Image</h4>
-                            <img src="images/week7/top.png" height="500">
-                            <img src="images/week7/cut.png" height="500">
+                            <center><img src="images/week7/top.png" height="500"></center>
+                            <center><img src="images/week7/cut.png" height="500"></center>
                             <hr>
                             
                             <h4>PCB Milling</h4>
                             <p>I explaind about the PCB milling procedure in the <b>Week5 :- Electronics Production </b>. same as here , am using Modela MDX for milling the PCB.</p>
-                            <img src="images/week7/0064.png" width="100%">
+                            <center><img src="images/week7/0064.png" width="100%"></center>
                             <p>I used the <b>Fab Modules</b> with Modela to mill PCB.for milling i used <b>1/64</b> bit.</p>
-                            <img src="images/week7/0067.jpg" height="500">
+                            <center><img src="images/week7/0067.jpg" height="500"></center>
                             <p>I used single sided <b>FR-grade</b> PCB .</p>
-                            <img src="images/week7/0068.jpg" height="600">
+                            <center><img src="images/week7/0068.jpg" height="600"></center>
                             <p>Milling Started </p>
-                            <img src="images/week7/0069.jpg" height="600">
+                            <center><img src="images/week7/0069.jpg" height="600"></center>
                             <p>Next i need to cut out the Trace , for cutting the trace i used <b>1/32</b> bit.</p>
-                            <img src="images/week7/0065.png" width="100%">
+                            <center><img src="images/week7/0065.png" width="100%"></center>
                             
                             <h4>Soldering</h4>
                             <p>First i soldered <b>ATtiny44</b> Microcontoller.</p>
-                            <img src="images/week7/0070.jpg">
+                            <center><img src="images/week7/0070.jpg"></center>
                             <p>Then soldered one by one.</p>
-                            <img src="images/week7/0071.jpg" width="100%">
+                            <center><img src="images/week7/0071.jpg" width="100%"></center>
                             <h4>Hero Shot</h4>
-                            <img src="images/week7/Hero-shot.jpg" width="100%"><br><br>
-                            
+                            <center><img src="images/week7/Hero-shot.jpg" width="100%"></center><br><br>
+                            <hr>
                             <h4>Arduino Progarming</h4>
                             <p>I have experience in Arduino development , so i progarmmed the <b>Hello-Echo</b> board with <b>Arduino IDE</b>. Arduino C is simple and easy to learn. </p>
                             <p><b>Arduino Code</b></p>
@@ -222,19 +223,19 @@
                             
                             <p>It's a simple Arduino blink progarmme. </p>
                             
-                            <iframe src="https://giphy.com/embed/9V5c3w0B2yZocJmSV6" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                            <center><iframe src="https://giphy.com/embed/9V5c3w0B2yZocJmSV6" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></center>
                             <hr>
                             
                             
                             <h3>Lab Test Equipments </h3>
                             <h4>Multimeter</h4>
                             <p>A digital multimeter  is a test tool used to measure two or more electrical values—principally voltage (volts), current (amps) and resistance (ohms). It is a standard diagnostic tool for technicians in the electrical/electronic industries.</p>
-                            <img src="images/week7/0075.jpg" height="500">
+                            <center><img src="images/week7/0075.jpg" height="500"></center>
                             <p>I used multimeter to check my PCB continuity to ensure all the connection is connected Perfectly.</p>
-                            <img src="images/week7/0081.jpg" height="400">
-                            
+                            <center><img src="images/week7/0081.jpg" height="400"></center>
+                            <hr>
                             <h3>DC Power Supply</h3>
-                            <img src="images/week7/0078.jpg" height="700">
+                            <center><img src="images/week7/0078.jpg" height="700"></center>
                             <p>In Fablab koch we have <b>Gwinstek GPD-3303D</b>  </p>
                             <img src="images/week7/0080.png">
                             <p>The Instek GPD-3303D 3-Channel Programmable Linear DC Power Supply, 195W, 100mV/10mA .</p>
@@ -253,7 +254,7 @@
                             
                             
                             <h3>Digital Oscilloscope</h3>
-                            <img src="images/week7/0074.jpg" height="500" >
+                            <center><img src="images/week7/0074.jpg" height="500" ></center>
                             <p>When we are deeling with timing and signal shapes a simple multimeter became insufficent. We need to have something more to visualize and compare the signal. A digital storage oscilloscope is an apt choise for this.The DSO in our lap has the following capabilities.</p>
                             <ul><li>100 MHz bandwidth, 1 M Memory</li>
                             <li>High resolution color LCD display</li>
@@ -267,16 +268,16 @@
                             <li>Display of date, clock and help information</li>
                             <li>Also available in 60 MHz DS-1065, 100 MHz DS-1200</li></ul><br>
                             <p>I tested ATtiny44 Pulse Width Modulation with the Oscilloscope  </p>
-                           <iframe width="560" height="315" src="https://www.youtube.com/embed/mKg1A_tDErI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            
+                           <center><iframe width="560" height="315" src="https://www.youtube.com/embed/mKg1A_tDErI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
+                            <hr>
                             
                             
                             <h3>Function generator</h3>
-                            <img src="images/week7/0073.jpg" height="500">
+                            <center><img src="images/week7/0073.jpg" height="500"></center>
                             <p>The AFG-2100/2000 Series Arbitrary Function Generator is a DDS (Direct Digital Synthesized) based signal generato.It can generate output of Sine, Square (Pulse), Ramp (Triangle), Noise and Arbitrary waveforms. It provides 20M Sa/s sampling rate, 10 bit vertical resolution and 4k point memory .Also it can generate 0.1Hz resolution of Sine, Square and Triangle waveforms and the 1% ~ 99% adjustable duty cycle of Square (Pulse) waveform</p>
                             <p>We connected the out put of the function generator to the DSO and observed the variation of signal with change in different parameters. here also we have to press the output buttion to get the output signal.</p>
                             
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/X7T-4SRzAbM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/X7T-4SRzAbM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
                             <hr>
                             <h3>Resource</h3>
@@ -307,7 +308,7 @@
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -316,7 +317,7 @@
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>

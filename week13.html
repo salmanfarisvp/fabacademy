@@ -58,10 +58,10 @@
                             <p>In this week we need to develop an Application that interface our Input or Output devices, .professor neil gave us a introduction for building interface application and also communication protocols.</p>
                             
                             <h3>MIT App inventor</h3>
-                            <img src="images/week13/001.png">
+                            <center><img src="images/week13/001.png"></center>
                             <p>App Inventor for Android is an open-source web application originally provided by Google, and now maintained by the Massachusetts Institute of Technology (MIT).App Inventor lets you develop applications for Android phones using a web browser and either a connected phone or emulator. </p>
                             <p><b>How it work..?</b></p>
-                            <img src="images/week13/002.png">
+                            <Cenetr><img src="images/week13/002.png"></Cenetr>
                             <p>App inventor have two part </p>
                             <ul>
                             <li>The <b>App Inventor Designer</b>, where you select the components for your app.</li>
@@ -72,24 +72,24 @@
                             <ul>
                             <li><b>UI Design</b></li>
                             <p>The App Inventor Components are located on the left hand side of the Designer Window under the title Palette. Components are the basic elements you use to make apps on the Android phone. They're like the ingredients in a recipe. Some components are very simple, like a Label component, which just shows text on the screen, or a Button component  that you tap to initiate an action.</p>
-                            <img src="images/week13/003.png" height="500">
+                            <center><img src="images/week13/003.png" height="500"></center>
                             <br><br><p>I added two <b>Buttons</b> For Turn ON and OFF the LED , and One <b>Listpicker</b> for selecting the bluetooth device.also we need to add the <b>Bluetooth Clinet</b> it avilable under the <b>Connectivity</b> tab. </p>
-                            <img src="images/week13/004.png" height="600">
+                            <center><img src="images/week13/004.png" height="600"></center>
                             <p>Here is how i designed my Application User Interface.you can see the components list that i used in the app. </p>
                              
                             <li><b>Programming</b></li>
                             <p>Actually we don't need any coding to do our app , we just need to arrange some blocks in a order .</p>
-                            <img src="images/week13/005.png" height="500">
+                            <center><img src="images/week13/005.png" height="500"></center>
                             <p>here we have main two code blocks, </p>
                             <ol>
                             <li><b>Bluetooth selection</b></li>
                             <p>we are using <b>ListPicker</b> for the bluetooth selection. </p>
-                            <img src="images/week13/006.png" >
+                            <center><img src="images/week13/006.png" ></center>
                             <p><b>ListPicker</b> have two state , one is <b>BeforePicking</b> state,in here we are loading bluetooth names in the list, second is <b>AfterPicking</b> here we are connecting the Bluetooth device that loaded on the ListPicker BeforePicking state , and also we are changing the text of the ListPicker in to <b>Connected</b> when we establish a bluetooth connection. </p>
                             
                             <li><b>Button Activity</b></li>
                             <p>we are using two buttons for contorling LED state.</p>
-                            <img src="images/week13/007.png">
+                            <center><img src="images/week13/007.png"></center>
                             <p>when we <b>click a button</b> bluetooth will transmit a text to device that connectedw with phone(we alredy connected a bluetooth device using ListPicker Bluetooth Selection). here if we press the Button2 it will transmit letter <b>'A'</b> and if we press the Button3 it will transmit letter <b>'B'</b> ,that's all. </p>
                             
                             </ol>
@@ -98,9 +98,9 @@
                           <hr>
                             <h3>Hardware Development</h3>
                             <p>For the project i,am using re-designed <b><a href="week7.html">Echo-Hello</a></b> board that we designed in <a href="week7.html">Electronics Production</a> week , beacuse it have in-built <b>LED</b> and <b>UART</b> Port.</p>
-                            <img src="images/week13/008.jpg">
+                            <center><img src="images/week13/008.jpg"></center>
                             <p>for bluetooth communication we are using <b>HC-05</b> module.</p>
-                            <img src="images/week13/009.jpg">
+                            <center><img src="images/week13/009.jpg"></center>
                             <p>It's an easy to use <b>Bluetooth SPP (Serial Port Protocol)</b> module,designed for transparent wireless serial connection setup.he HC-05 Bluetooth Module can be used in a Master or Slave configuration.This serial port bluetooth module is fully qualified Bluetooth V2.0+EDR (Enhanced Data Rate) 3Mbps Modulation with complete 2.4GHz radio transceiver and baseband. It uses CSR Bluecore 04‐External single chip Rluetooth system with CMOS technology and with AFH (Adaptive Frequency Hopping Feature).datasheet :- <a href="https://www.gme.cz/data/attachments/dsh.772-148.1.pdf">https://www.gme.cz/data/attachments/dsh.772-148.1.pdf</a></p>
                             
                             <p><b>Pin Description</b></p>
@@ -138,7 +138,7 @@
                             <hr>
                             
                             <p><b>Schematic Diagram</b></p>
-                            <img src="images/week13/0010.png" height="200">
+                            <center><img src="images/week13/0010.png" height="200"></center>
                             <p>here we are connecting blutooth <b>VCC</b> connect <b>5v</b> , <b>GND</b>connect <b>GND</b> , <b>RXD</b> connect <b>TX</b> becasue The <b>transmitter should be talking to the receive</b>r, not to another transmitter , so the <b>TXD</b> connect <b>RX</b> .</p>
                             <hr>
                             <h3>Programming</h3>
@@ -187,16 +187,16 @@
                             <hr>
                             <h3>Demonstration</h3>
                             <p>For testing first we need to install applicaion on our mobile phone , <b>.apk</b> file can be download by clicking <b>Build</b> button on the top navigavtion panel.</p>
-                            <img src="images/week13/0012.png">
+                            <center><img src="images/week13/0012.png"></center>
                             <p>Building Apk will take less than one minute time.</p>
-                            <img src="images/week13/0011.png" height="500">
+                            <center><img src="images/week13/0011.png" height="500"></center>
                             <p>Download the <b>.apk</b> file and install it on your android phone.next upload bluetooth progarmme to your board and connect with bluetooth module.</p>
                             
                             <p><b>Application Demo</b></p>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/M5OQrVb-FQ0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/M5OQrVb-FQ0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
                             <p><b>Working Demo</b></p>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/5vnlzivrh8A?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/5vnlzivrh8A?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
                             <hr>
                              <h4>Resource File</h4>
@@ -208,7 +208,7 @@
                            <h4>processing</h4>
                             <p>Processing is an open-source computer programming language and integrated development environment (IDE) built for the electronic arts, new media art, and visual design communities with the purpose of teaching non-programmers the fundamentals of computer programming in a visual context. The Processing language builds on the <b>Java</b> language, but uses a simplified syntax and a <b>graphics user interface</b>.</p>
                             <p>In here i,am utilizing <b>Termistor</b> of my <b>Sense</b> board , and my plan is to make a <b>Temprature Graph</b> using the Processing .so i used <b>controlP5</b> it's a GUI (graphical user interface) <b>library</b> for processing and it's very easy to use.and to get data from my board to <b>Processing </b> i used inbuilt <b>serial</b> library.</p>
-                            <img src="images/week13/0013.jpg" >
+                            <center><img src="images/week13/0013.jpg" ></center>
                             <p>I used <b>10k Thermistor </b> to measure the temprature and also added a <b>Pull-up</b> resistor .</p>
                             
                             <h4>Programming</h4>
@@ -261,7 +261,7 @@
                             <p>this equation is fairly complex and i used the simplified B parameter equation.(source:- <a href="https://en.wikipedia.org/wiki/Thermistor">https://en.wikipedia.org/wiki/Thermistor</a>.</p>
                             <img src="images/week13/0015.png">
                             <p>and is used arduino <b>Serial.write</b> function insted of <b>Serial.println</b> beacause i can't read the data from the other side using the <b>Print</b> beacuse it's send <b> ASCII characters</b>so we can read easily but for passing the value to <b>processing</b> we need to make it <b>bytes</b> so that's why i used <b>Serial.write</b> .</p>
-                            
+                            <hr>
                             <p><b>Processing Code</b></p>
                             <pre>
                             <code>
@@ -314,35 +314,12 @@ Chart&nbsp;myChart;
                             
                             
                             <h4>Demo</h4>
-                            <img src="images/week13/0016.png" width="100%" >
+                            <center><img src="images/week13/0016.png" width="100%" ></center>
                             
                             <p><b>Video</b></p>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/-SOm6vUQjoY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/-SOm6vUQjoY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
-                            
-                            
-                            
-                        
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-
-
-
-
-
-                            
+          
        
                             
                         <br><br><br>  
@@ -359,7 +336,7 @@ Chart&nbsp;myChart;
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -368,7 +345,7 @@ Chart&nbsp;myChart;
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>

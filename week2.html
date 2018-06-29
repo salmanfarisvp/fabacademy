@@ -57,93 +57,97 @@
                             <p>The fab documentation is fully based on git. I also as some experience with git version control system by sharing most of my open source project on GitHub. (<a href="http://www.github.com/salmanfarisvp">github.com/salmanfarisvp</a>)</p>
                             
                             <h3>Installing Ubuntu</h3>
-                            <img src="images/week2/ubuntu16.04.jpg" height="250">
+                            <center><img src="images/week2/ubuntu16.04.jpg" height="250"></center>
                             <p>My instructor told me to better to use any Linux distro, as of now I have experience in Raspbian(Raspberry + Debian) it's a Single board computer. anyway, i would like to learn new things so I installed Ubuntu 16.04 LTS version.</p>
                             <p>ubuntu is Debian based distro and managed by canonical limited, there is so many Linux based distro available like yocto, arch, Debian, mint...etc. I chose Ubuntu LTS because it has a huge community base, LTS means it gives Long Term Support like security patches.</p>
-                            <img src="images/week2/drive.png" height="75">
+                            <center><img src="images/week2/drive.png" height="75"></center>
                             <p>my laptop has 500 GB hard-disk and 2 partitions, one is <b>C</b> that's have Windows os and another one <b>D</b> that's for storing my personal files.</p>
                             <p>i decided to install ubuntu by creating a new partition for Local Disk(D):that's for Windows OS and another for my personal file partition.</p>
-                            <img src="images/week2/shrink001.png" height="200">
+                            <center><img src="images/week2/shrink001.png" height="200"></center>
                             <p>with the help of windows Disk management tool, we can simply shrink a volume of any drive.</p>
-                            <img src="images/week2/shrink002.png" height="250">
+                            <center><img src="images/week2/shrink002.png" height="250"></center>
                             <p>and given how much amount we need to shrink from this drive . in ubuntu we need only 25 GB, I'll just give 100GB. because in the academy time I will be using the ubuntu so we need more space store our files.</p>
                             <p>after that, i downloaded the ubuntu 16.04 because that's the only version now have LTS (website: -https://www.ubuntu.com/)</p>
-                            <img src="images/week2/ubuntusite.png" height="300">
+                            <center><img src="images/week2/ubuntusite.png" height="300"></center>
                             <p>i used Ethcher tool to burn the iso to USB. it's great simple open source tool by resin.io</p>
-                            <img src="images/week2/imageburn.png" height="300">
+                            <center><img src="images/week2/imageburn.png" height="300"></center>
                             <p>After the burning the image, I turn-off the laptop and entered in boot menu (sorry, I can't take screenshot from there.)and choose boot from usb,and it's starting to install ubuntu after I selected appropriate drive (the free space that we are created ).</p>
                             
                             <blockquote>After the installation I force to restart my system, but after that system not booting the ubuntu os, automatically entering windows 10 . so I searched that, so found that I need to switch the ubuntu boot manager to get an option ubuntu or windows when system on, so I just restart computer and get back to the boot manager and changed the boot manager windows to ubuntu.</blockquote>
+                            <hr>
                             
                             <h3>Setup Git</h3>
-                            <img src="images/week2/git.png">
+                            <center><img src="images/week2/git.png"></center>
                             <p>Git is verison control system for traking changes in computer file and coordinating work on those files among multiple people.</p>
                             <p>Git was created by Linus Torvalds in 2005 for development of the Linux Kernal.</p>
-                            <img src="images/week2/gitwork.png">
+                            <center><img src="images/week2/gitwork.png"></center>
                             <p>This is a great example that shows how git works.</p>
                             <p>After the installation of Ubuntu I installed git by typing <Code>sudo apt-get install git</Code> on my linux terminal.</p>
-                            <img src="images/week2/gitinstall.png">
+                            <center><img src="images/week2/gitinstall.png"></center>
                             <p>You can also check that you already installed git or not by typig <code>git help</code> on your terminal.</p>
-                            <img src="images/week2/githelp.png" height="450">
+                            <center><img src="images/week2/githelp.png" height="500"></center>
                             <p>now we can confirm that we have installed git client successful on our Ubuntu machine.</p>
-                            
+                            <hr>
                             
                             <h3>Setup Gitlab and SSH</h3>
                             <p>Gitlab is web-based Git Repository manager with wiki and issue tracking features. </p>
                             <p>In order to upload(push) our files to Gitlab Repository we need to setup our computer by Genarating SSH key. </p>
                             <p>SSH is provide a Private/Public key management System</p>
                             <p>First Genarate SSH key by typing <code>SSH-keygen,</code> on Terminal.</p>
-                            <img src="images/week2/ssh01.png">
+                            <center><img src="images/week2/ssh01.png"></center>
                             <p>so we genarated our ssh key, next copy the c key from the file that we saved .</p>
-                            <img src="images/week2/ssh02.png">
+                            <center><img src="images/week2/ssh02.png"></center>
                             <p>now sync with gitlab by pasting the ssh key to the gitlab</p>
                             <p>open gitlab account and open settings</p>
-                            <img src="images/week2/ssh03.png" height="300">   
+                            <center><img src="images/week2/ssh03.png" height="350"> </center>  
                             <p>Open SSH Panel</p>
-                            <img src="images/week2/ssh04.png">
+                            <center><img src="images/week2/ssh04.png"></center>
                             <p>Paste your key here</p>
-                            <img src="images/week2/ssh05.png" height="300">
+                            <center><img src="images/week2/ssh05.png" height="300"></center>
                             <p>Now Git and Gitlab was configured .</p>
+                            <hr>
                         
                             <h3>Build a Website</h3>
-                            <p>As a Computer Science Graduate I know little bit webpage development, I referenced so many themes and frameworks like bootstrap, Jekyll. but I decided to create from scratch .so started to develop.</p>
+                            <p>As a Computer Science Graduate I know little bit webpage development, I referenced so many themes and frameworks like bootstrap, Jekyll. but I decided to create from scratch .so started to develop (later i choosed a free template).</p>
+                            <hr>
                             
                             <h5>HTML basic</h5>
                             <p>HTML stands for <b>Hyper Text Tarsnfer markup language</b> , it's like a skeleton of webpage, but for design we use CSS-casecading style sheet.In every HTML page we need start with "HTML" tag. like that there lot's tag for repersenting each model example " for paragarph..</p>
+                            <hr>
                             
-                          <h5>Text Editor</h5>
+                           <h5>Text Editor</h5>
                            <p>We need a text editor application for edition HTML document, we can use normal notepad, gedit.</p>
                            <h5>Vim</h5>
                             <p>Vim is a know as <b>VI</b>i<b>M</b>proved  .it's fully based on text user interface .First i installed Vim by typing <code>Sudo apt-get install vim</code> by typing terminal.</p>
-                            <img src="images/week2/viminstall001.png" height="400">
+                            <center><img src="images/week2/viminstall001.png" height="400"></center><br><br>
                             <p>we can open vim by typing <code>vim 'filename'</code>, so here i open html file by typing <code>vim fab.html</code></p>
-                            <img src="images/week2/vim.png" height="400"><br>
+                            <center><img src="images/week2/vim.png" height="400"></center><br><br>
                             
                             <h5>GNU Nano</h5>
                             <p>Gnu nano is a text editor based on Command Line interface.</p>
-                            <img src="images/week2/nano.png" height="400">
+                            <center><img src="images/week2/nano.png" height="400"></center>
                             
                             <h5>Visual Studio code</h5>
                             <p>VS code is a Open Source editor developed by Microsoft </p>
-                            <img src="images/week2/vscode.png" height="400"><br>
+                            <center><img src="images/week2/vscode.png" height="400"></center><br><br>
                             
                             <h5>Brackets</h5>
                             <p>brackets was developed by Adobe and it's completely free, we can download the Debian package from its website</p>
-                            <img src="images/week2/brackets.png" height="400">
-                            
+                            <center><img src="images/week2/brackets.png" height="400"></center><br><br>
+                            <hr>
                             <h3>Website lauch</h3>
                             <p>In here I completely built my personal website from scratch. so I started with pure HTML . in future I will be added CSS and javascript to make look better.the first-week assignment is to sketch a project idea, I documented it on our personal site. I'll show how I did that.</p>
                             <p>In the git section, I just cloned my repo, so I saved HTML file in my repo directory.don't delete .git file it's stored all the imported file you need for git, so don't delete it.</p>
-                            <img src="images/week2/webdev001.png" height="400">
+                            <center><img src="images/week2/webdev001.png" height="500"></center><br><br>
                             <p>that's why I love brackets, it has in-built preview, so no need to save and refresh each time.I learn most of the web development from codeacademy and I also take a course from udemy.after the website development, it's time to make our website live.actually, we need upload our website to the fablab repo, it's called push</p>
                             <p>first we need clone the old repo.</p>
                             <p>after the web page development, we need add the new items by typing <code>git add --all</code></p>
                             <p>after the add we need commit by typing <code>git commit -m "message here"</code></p>
                             <p>after the commit , we need upload to Gitlab by typing <code>git push</code></p>
-                            <img src="images/week2/gitweek2push.png" height="400">
-                            
+                            <center><img src="images/week2/gitweek2push.png" height="500"></center><br><br>
+                            <hr>
                             <h3>Website Update</h3>
-                            <img src="images/week2/webupdate.png" height="300" >
+                            <center><img src="images/week2/webupdate.png" height="400" ></center><br><br>
                             <p>In week three i  upadated my website with a responsive theme. </p>
                             
                             
@@ -166,7 +170,7 @@
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -175,7 +179,7 @@
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>

@@ -59,7 +59,7 @@
                             
                             <h4>Microprocessor VS Microcontrollers</h4>
                             <p>Microprocessor is a central processing unit (CPU) on a single chip. but in Microcontrollers it consist of CPU,Memmory Unit (RAM , ROM )and I/O's .but Microcontrollers is extremely slow when comparing Microprocessor .   </p>
-                            <img src="images/week9/001.png">
+                            <center><img src="images/week9/001.png"></center>
                             <p>In here we are Focusing on Microcontrollers .</p>
                             
                             <h4>Architectures</h4>
@@ -95,26 +95,22 @@
                             <ul>
                             <li><b>SRAM</b> is the type of memory where data must be read and written to repeatedly. This is the data will change the different code being uploaded to the AVR microcontroller circuit. By default, this is the most common and used type of memory.</li>
                             <li><b>Flash memory</b> is the memory that normally stores data that does not change. This is the program memory. It stores the part of the microcontroller program that is fixed and will always stay permanent. This is similar to the BIOS of a general-purpose computer.</li>
-                            <img src="images/week9/0024.jpg">
+                            <center><img src="images/week9/0024.jpg"></center>
                             <p>The Flash memory has an endurance of at least <b>10,000 write/erase cycles</b>. The ATtiny24A/44A/84A Program Counter (PC) is 10/11/12 bits wide, thus addressing the 1024/2048/4096 Program memory locations </p>
                             
                             <li><b>Registers</b> are small memory elements in microcontrollers with 8 bits capacity. Registers can be accessed quickly by the ALU (Arithmetic and Logic Unit) of microcontrollers </li>
-                            <img src="images/week9/0025.jpg"><br><br>
-                            
-                            
-                            
+                            <center><img src="images/week9/0025.jpg"></center><br><br>
+                      
                             </ul>
-                            
-                            
-                            
+                            <hr>
                             <h4>Hello-Echo board</h4>
-                            <img src="images/week7/PCB.png" width="100%">
+                            <center>><img src="images/week7/PCB.png" width="100%"></center>
                             <p>This week we need to progarmme the <b>Hello-echo board </b> that we designed in the <a href="week7.html">Electronics Design</a> week.<br> Echo board is based on the <b>Microchip ATtiny44</b> . It's a <b>8-bit RISC</b> based  microcontroller.The Originla Design have only the <b>UART</b> Port and I added e a Programmable Button connected to pin <b>PA2</b> with a <b>Pull-down</b> Resistor and LED connectd to <b>PA3</b> also it's have <b>20hz</b> External Resonator.  </p>
                            
                             
                             <h4>ATtiny44</h4><br>
                             <p>It's a low power <b>AVR® 8-bit</b> microcontroller based on the RISC architecture.It have 12 GPIO pin's. </p>
-                            <img src="images/week9/002.PNG" width="100%">
+                            <center><img src="images/week9/002.PNG" width="100%"></center>
                             <p>The Atmel ATtiny24/44/84 provides the following features: 2/4/8K bytes of in-system programmable flash, 128/256/512 bytes EEPROM, 128/256/512 bytes SRAM, 12 general purpose I/O lines, 32 general purpose working registers, an 8-bit Timer/Counter with two PWM channels, a 16-bit Timer/Counter with two PWM channels, internal and external interrupts, an 8-channel 10-bit ADC, programmable gain stage (1x, 20x) for 12 differential ADC channel pairs, a programmable watchdog timer with internal oscillator, internal calibrated oscillator, and three software selectable power saving modes</p>
                             <p>The best Guide to know about a microcontroller and Instruction set it's <b>Datasheet</b>.we will get all the information from the Datasheet , only problem is it's not a beginner friendly. I started Reading ATtiny44 Datasheet that i got from the Micorchip website. <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7701_Automotive-Microcontrollers-ATtiny24-44-84_Datasheet.pdf">Here you can Download it </a>. </p>
                             <p>For Six -Wire ISP Programming of ATtiny 44 using six pins shown in below</p>
@@ -127,7 +123,8 @@
                             </ul>
 
                             
-                            <img src="images/week9/004.PNG"><br><br>
+                            <center><img src="images/week9/004.PNG"></center><br><br>
+                            <hr>
                         
                             <h4>Pin Descriptions</h4>
                             <ul>
@@ -149,7 +146,7 @@
                             </ul>
                             
                             <p><b>Block Diagram</b></p>
-                            <img src="images/week9/003.PNG" width="50%">
+                            <center><img src="images/week9/003.PNG" width="50%"></center>
                             <p>Block Diagram will explain Architecture of the Microcontroller.The AVR uses a <b>Harvard architecture</b>, with separate memories and buses for program and data. Instructions in the program memory are executed with a single-level pipelining. While one instruction is being executed, the next instruction is <b>pre-fetched</b> from the program memory. The ALU supports arithmetic and logic operations between registers or between a constant and a register. Single-register operations can also be executed in the ALU. After an arithmetic operation, the status register is updated to reflect information about the result of the operation.we wil go through all the Stacks when we comes to Progarmme the chip.</p>
                
                             
@@ -166,20 +163,21 @@
                             <ul>
                             <li>Install and Open <b>Arduino IDE</b></li>  
                             <li>Open preference by clicking <code>File >> preference</code>  </li>
-                            <img src="images/week9/006.png">
+                            <center><img src="images/week9/006.png"></center>
                             <li>In <b>Additional Board Manager URls</b> add the Following URL </li>
                          <code>https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards manager/package_damellis_attiny_index.json</code>
-                            <br><br><img src="images/week9/007.png">
+                            <br><br>
+                            <center><img src="images/week9/007.png"></center>
                             <li>After adding the URL open <b>Board Manager</b> by clicking <code>Tools >> Board >> Board Manager</code> </li>
-                            <img src="images/week9/008.png">
+                            <center><img src="images/week9/008.png"></center>
                             <li>Search for <b>ATtiny44</b> in the following Window.(Make sure you have Internet connection).and Install the latest version .</li>
-                            <img src="images/week9/009.png">
+                            <center><img src="images/week9/009.png"></center>
                             <li>Now you can select <b>ATtiny44 </b> under the ATtiny Microcontrollers in board Selection </li>
-                            <img src="images/week9/0010.png">
+                            <center><img src="images/week9/0010.png"></center>
                             <li>Select appropriate <b>Clock</b> and <b>Programmer</b>.</li>
-                            <img src="images/week9/011.png"> <br>
+                            <center><img src="images/week9/011.png"></center> <br>
                             <p>We are using <b>Fab ISP</b> to programme the <b>Hello-Echo board</b> so Select the <b>Programmer</b> as <b>USBtinyISP</b>.</p>
-                            <img src="images/week9/012.png">
+                            <center><img src="images/week9/012.png"></center>
                             <p>First we need to <b></b></p>
                             </ul>
                             <p>Now all set , first we are going to progarmme <b>Blink</b> a.k.a <b>Hello world</b>.</p>
@@ -202,9 +200,9 @@
                                 
                         <p>Click <b>Upload</b> to flash the Hello-Echo Board .</p>
                             
-                        <iframe src="https://giphy.com/embed/9V5c3w0B2yZocJmSV6" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                        <center><iframe src="https://giphy.com/embed/9V5c3w0B2yZocJmSV6" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></center><br><br>
                             
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4lQGvkmLhDo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/4lQGvkmLhDo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center><br><br>
                             
                         
                         <p>LED will ON when we Press the Button.</p>
@@ -231,8 +229,8 @@
 </code>
 </pre>
                              
-                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
-                            
+                        <center><iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></center><br><br>
+                        <hr>
                         <h4>Atmel Studio (GCC C)</h4>
                         
                         <p>Atmel Studio is the integrated development platform (IDP) for developing and debugging all AVR® and SAM microcontroller applications. The Atmel Studio 7 IDP gives you a seamless and easy-to-use environment to write, build and debug your applications written in C/C++ or assembly code. It also connects seamlessly to the debuggers, programmers and development kits that support AVR and SAM devices. (source:- microchip offical page).</p>
@@ -253,16 +251,16 @@
                         
                         
                         <p>In Atmel Studio we are writing <b>C</b> code. In order to use the <b>Atmel Studio</b> with our <b>Fab ISP</b> we need to configure the studio before use.</p>
-                        <img src="images/week9/0014.png"><br><br>
+                        <center><img src="images/week9/0014.png"></center><br><br>
                         
                         <ul>
-                        <li><b>Debug Verison</b></li><br>
+                        <li><b>Debug Version</b></li><br>
                         <p>Title:- <b>USBTiny ISP Debug</b>.<br>
                         Command :- <b>avrdude.exe</b><br>
                         Arguments :- <b>-c usbtiny -p attiny44  -U flash:w:$(ProjectDir)Debug\$(TargetName).hex:i</b></p>
                         <p>click apply and ok to save the tool.</p>
                         
-                        <li><b>Release Verison</b></li> <br>
+                        <li><b>Release Version</b></li> <br>
                         <p>Title:- <b>USBTiny ISP Release</b>.<br>
                         Command :- <b>avrdude.exe</b><br>
                         Arguments :- <b>-c usbtiny -p attiny44  -U flash:w:$(ProjectDir)Release\$(TargetName).hex:i</b></p>
@@ -274,11 +272,11 @@
                             
                         <ul>
                         <li>Start a Project by clicking <b>File</b> >> <b>New</b> >> <b>Project</b> </li>  
-                        <img src="images/week9/0016.png"><br><br>
+                        <center><img src="images/week9/0016.png"></center><br><br>
                         <li>select <b>C/C++</b> as language and Template as <b>GCC C Executable Project</b> give a name and click <b>OK</b>.</li>
-                        <img src="images/week9/0017.png" ><br><br>
+                        <center><img src="images/week9/0017.png" ></center><br><br>
                         <li>Select the Target Microcontroller , in here we have <b>ATtiny44</b>.</li>
-                        <img src="images/week9/0020.png" >
+                        <center><img src="images/week9/0020.png" ></center>
                         </ul>
                         
                         <pre><code>
@@ -313,16 +311,17 @@
                         
                         <ul>
                         <li>For Uploading code first we need to build/compile it by using <b>Build</b> >> <b>Build Soution</b> </li>
-                        <img src="images/week9/0018.png"><br><br>
+                        <center><img src="images/week9/0018.png"></center><br><br>
                         <li>After the compailation we need to flash the code in to our board</li>
-                        <img src="images/week9/0019.png"><br><br>
-                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
+                        <center><img src="images/week9/0019.png"></center><br><br>
+                        <center><iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></center><br><br>
                         <p>Output was not differnt with the arduino becasue we just blink the led when the button press.</p>
                         </ul><br><br>
+                        <hr>
                         <h4>Atmel Studio (Assembler) </h4>
                         <p>Assembly language is an alphanumeric representation of machine code.The instructions used in writing programs in assembly language are not general but specific to the microcontroller. Each company provides a set of instructions for there microcontrollers. AVR 8-bits microcontrollers have a <a href="http://www.avr-tutorials.com/sites/default/files/Instruction%20Set%20Summary.pdf"> common instruction set</a>.</p>
                         <p>When we code in <b>Assembler</b> we need the datasheet to know about the MC <b>instruction set</b>.<br></p>
-                        <img src="images/week9/0026.png">
+                        <center><img src="images/week9/0026.png"></center>
                         <p>So here we are using <b>Atmel studio</b> to write the Assebler code .First we need to start a project that we did in the C code.After that Select the <b>Assembler</b> in template and Click ok.<br>
                         After that Select our Target Microcontroller , we have <b>ATtiny44</b>. </p>
 <pre><code>
@@ -352,16 +351,16 @@
                         <li><code>RJMP</code> :- Relative Jump , here it will jump into a specfic label's that we mentioned , so here it will jump to <b>main</b> label.</li>
                         </ul>
                         <p>For Uploading code first we need to build/compile it by using <b>Build</b> >> <b>Build Soution</b> </p>
-                        <img src="images/week9/0018.png"><br><br>
+                        <center><img src="images/week9/0018.png"></center><br><br>
                         <p>After the compailation we need to flash the code in to our board</p>
-                        <img src="images/week9/0019.png"><br><br>
-                        <iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>
-                        
+                        <center><img src="images/week9/0019.png"></center>><br><br>
+                        <center><iframe src="https://giphy.com/embed/oFDSott3IoIM4nQPHL" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></center><br><br>
+                        <hr>
                         <h4>PWM-Pulse Width Modulation</h4>
                         <p>PWM, is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off. This on-off pattern can simulate voltages in between full on (5 Volts) and off (0 Volts) by changing the portion of the time the signal spends on versus the time that the signal spends off. The duration of "on time" is called the pulse width. To get varying analog values, you change, or modulate, that pulse width. If you repeat this on-off pattern fast enough with an LED for example, the result is as if the signal is a steady voltage between 0 and 5v controlling the brightness of the LED.</p>
-                        <img src="images/week9/0027.png"><br><br>  
+                        <center><img src="images/week9/0027.png"></center><br><br>  
                         <p> In  here the green lines represent a regular time period. This duration or period is the inverse of the PWM frequency. In other words, with Arduino's PWM frequency at about 500Hz, the green lines would measure 2 milliseconds each. A call to analogWrite() is on a scale of 0 - 255, such that analogWrite(255) requests a 100% duty cycle (always on), and analogWrite(127) is a 50% duty cycle (on half the time) for example. (Source :- Arduino.cc)</p>
-                        <img src="images/week9/0028.png"><br>
+                        <center><img src="images/week9/0028.png"></center><br>
                         <p>Not all the pin's of <b>ATtiny44</b> support <n>PWM</n>, in my board i used <b>PA3</b> for led, but unfortunately that's not supported PWM, for this experiment i used my colleagues hello-echo board .he used pin <b>PA7</b> and it's PWM supported.<br>i used <b>Arduino IDE</b> to progarmme the board .</p>
                         
                         <pre> <code>
@@ -382,7 +381,7 @@
                         <p>In here we are using <code>analogWrite()</code> to give <b>PWM</b> signal.in <code>digitalWrite</code> we can only write <b>HIGH</b> or <b>LOW</b> but we need to genrate the 8-bit data get a PWM signal that's why we used <b>analogWrite</b> The variable dutyCycle can be set to a value between <b>0</b> and <b>255</b>, whereby 0 means the pin is always off and 255 means it's always on. The problem is, that you cannot set the frequency of the output square wave. The default frequency seems to be either 250 Hz or 500 Hz, which is clearly not enough for certain use cases. To change the frequency, you have to set the appropriate flags in the Attinys registers manually. </p>
                         
                          
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/mKg1A_tDErI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br>
+                        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/mKg1A_tDErI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center><br><br>
                         <h4>Timer Configuration</h4>
                         <p>On the Attiny84 and other Atmel chips only certain pins can be used for PWM output. Every PWM-pin is controlled by a certain timer and different chips have different timers. It's all mentioned in the datasheet . The Attiny84 has two timers called Timer0 and Timer1 and four PWM pins. The pins 5 and 6 (Arduino digital pins 8 and 7 respectively) are controlled by Timer0 and the pins 7 and 8 (Arduino digital pins 6 and 5 respectively) are controlled by Timer1.<br>
                         Timer0 is used by the Arduino environment for timing functions like delay(), millis() and micros() and many libraries depend on these. So by changing the frequency of Timer0 a lot of libraries will stop working correctly.</p>
@@ -725,52 +724,17 @@ avrdude.exe done.  Thank you.
                 <img src="images/week9/0029.jpg"><br>
                 <p>You can Download the Sheet from <a herf="http://www.st.com/content/ccc/resource/technical/document/datasheet/30/91/86/2d/db/94/4a/d6/DM00102166.pdf/files/DM00102166.pdf/jcr:content/translations/en.DM00102166.pdf">Here</a>.</p>
                             
+                <h4>Programing </h4>
+                <p>First i tried with <b>ARM MBED OS</b> , it's browser based online IDE.</p>
+                <img src="images/week9/0030.png" height="400">
+                        
+                <p>Click <b>Compiler</b> button in order open the IDE/Compiler.</p>
+                            
                 
                 
                 
                 
-                
-                        
-                        
-                        
-         
-
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                        
-                        
-                        
-                        
-                        
-                            
-                            
-                            
-                            
-                            
-                            
-
-
-                            
-                           
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+ 
                             
                          
                        <hr> <br><br><br>    
@@ -787,7 +751,7 @@ avrdude.exe done.  Thank you.
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -796,7 +760,7 @@ avrdude.exe done.  Thank you.
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>

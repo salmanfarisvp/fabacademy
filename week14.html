@@ -61,12 +61,12 @@
                             <p>Parallel interfaces transfer multiple bits at the same time. They usually require buses of data - transmitting across eight, sixteen, or more wires. Data is transferred in huge, crashing waves of 1’s and 0’s.</p>
                             
                             <figure>
-                            <img src="images/week14/001.png"> 
+                            <center><img src="images/week14/001.png"> </center>
                             <figcaption>An 8-bit data bus, controlled by a clock, transmitting a byte every clock pulse. 9 wires are used.(source:-sparkfun)</figcaption></figure>
                             
                             <p>Serial interfaces stream their data, one single bit at a time. These interfaces can operate on as little as one wire, usually never more than four.</p>
                             <figure>
-                            <img src="images/week14/002.png">
+                            <center><img src="images/week14/002.png"></center>
                             <figcaption>Example of a serial interface, transmitting one bit every clock pulse. Just 2 wires required! (source :- sparkfun)</figcaption> 
                             </figure>
                             <p>Think of the two interfaces as a stream of cars: a parallel interface would be the 8+ lane mega-highway, while a serial interface is more like a two-lane rural country road. Over a set amount of time, the mega-highway potentially gets more people to their destinations, but that rural two-laner serves its purpose and costs a fraction of the funds to build.</p><hr>
@@ -89,12 +89,12 @@
                             
                             <h4>Wiring and Hardware</h4>
                             <p>A serial bus consists of just two wires - one for sending data and another for receiving. As such, serial devices should have two serial pins: the receiver, RX, and the transmitter, TX.</p>
-                            <img src="images/week14/003.png">
+                            <center><img src="images/week14/003.png"></center>
                             <p>It’s important to note that those RX and TX labels are with respect to the device itself. So the RX from one device should go to the TX of the other, and vice-versa. It’s weird if you’re used to hooking up VCC to VCC, GND to GND, MOSI to MOSI, etc., but it makes sense if you think about it. The transmitter should be talking to the receiver, not to another transmitter.The same technique that we used to get data from our board to computer and read data from bluetooth module</p><hr>
                             
                             <h4>UARTs</h4>
                             <p>A universal asynchronous receiver/transmitter (UART) is a block of circuitry responsible for implementing serial communication. Essentially, the UART acts as an intermediary between parallel and serial interfaces. On one end of the UART is a bus of eight-or-so data lines (plus some control pins), on the other is the two serial wires - RX and TX.</p>
-                            <img src="images/week14/004.png">
+                            <center><img src="images/week14/004.png"></center>
                             <p>UARTs do exist as stand-alone ICs, but they’re more commonly found inside microcontrollers. You’ll have to check your microcontroller’s datasheet to see if it has any UARTs. Some have none, some have one, some have many. For example, the Arduino Uno - based on the “old faithful” ATmega328 - has just a single UART, while the Arduino Mega - built on an ATmega2560 - has a whopping four UARTs.</p>
                             <p><b>Software UARTs</b></p>
                             <p>If a microcontroller doesn’t have a UART (or doesn’t have enough), the serial interface can be bit-banged - directly controlled by the processor. This is the approach Arduino libraries like SoftwareSerial take , in our <b>ATtiny44</b> and <b>ATtiny45</b> doesn't have <b>Hardware UART</b> so I used <b>Software UART</b> by utilizing Arduino <b>SoftwareSerial</b> library .</p>
@@ -104,7 +104,7 @@
                             <h4>I2C</h4>
                             <p>So I start with I2C (a.k.a Two wire interface).as i mentined in the introduction section i done some arduino hobby project . one is I2C interfaced Real Time Clock module,I2C interface 16x2 LCD module .. etc. so why I2C , like it's name it's only need two wire for commuication <b>SDA</b> :- Serial Data and <b>SCL</b> :- Serial Clock.<br> The I2C communication bus is very popular and broadly used by many electronic devices because it can be easily implemented in many electronic designs which require communication between a master and multiple slave devices or even multiple master devices. The easy implementations comes with the fact that only two wires are required for communication between up to almost 128 (112) devices when using 7 bits addressing and up to almost 1024 (1008) devices when using 10 bits addressing.</p>.
                                                         
-                            <img src="images/week14/005.png">
+                            <center><img src="images/week14/005.png"></center>
                             <p>I2C requires a mere two wires, like asynchronous serial, but those two wires can support up to 1008 slave devices. Also, unlike SPI, I2C can support a multi-master system, allowing more than one master to communicate with all devices on the bus (although the master devices can’t talk to each other over the bus and must take turns using the bus lines).</p> 
                             
                             <p><b>I2C - A Brief History</b></p>
@@ -112,17 +112,17 @@
                             <hr>
                             
                             <p>So we can start with <B>I2C</B> Communication Protocol, before milling a new board i tried with my existing <b>Hello Echo</b> and my friend jacob board.my plan is to control the <b>slave</b> led light using the <b>master</b> board, so here am using <b>Hello echo </b> board as my <b>Master</b> because it have a on-board button and i used my friend jacob board as slave because it have on-board led. </p>
-                            <img src="images/week14/007.jpg" >
+                            <center><img src="images/week14/007.jpg" ></center>
                             <p>In <b>ATtiny44</b> datasheet we can see the <b>Two-wire Mode Operation, Simplified Diagram</b> in page number 122. </p>
-                            <img src="images/week14/006.png">
+                            <center><img src="images/week14/006.png"></center>
                             <p>In here we see a <b>Pull-Up</b> resistor between Slave and Master <b>SCK</b> and <b>SDA</b>. it's because  the I2C bus drivers are “open drain”, meaning that they can pull the corresponding signal line low, but cannot drive it high. Thus, there can be no bus contention where one device is trying to drive the line high while another tries to pull it low, eliminating the potential for damage to the drivers or excessive power dissipation in the system. Each signal line has a pull-up resistor on it, to restore the signal to high when no device is asserting it low.so here i used two <b>10 k</b> SMD resistor .</p>
-                            <img src="images/week14/008.jpg">
+                            <center><img src="images/week14/008.jpg"></center>
                             <p>For the pull-up resistor i just used copper sheet and a male header.and i used  breadboard for the connection. </p>
-                            <img src="images/week14/009.jpg" height="400"> <img src="images/week14/0010.jpg" height="400">
+                            <center><img src="images/week14/009.jpg" height="400"> <img src="images/week14/0010.jpg" height="400"></center>
                             <p>It's look like mess , but believe me it will work. here i used <b>ISP</b> pin <b>MOSI</b> for <b>SDA</b> and <b>SCL</b> for <b>SCK</b>.</p>
-                            <img src="images/week14/0011.png">
+                            <center><img src="images/week14/0011.png"></center>
                             <p>First i tried with Arduino offical <b>Wire.h</b> I2C library ,but it only throw some compailation error ,after googling and researching i got <b>TinyWire.h</b> library. it's not worked that i expected next i used a new <b>ATtiny board manager </b> called <b>ATTinyCore</b> here is the git repo :- <a href="https://github.com/SpenceKonde/ATTinyCore">https://github.com/SpenceKonde/ATTinyCore</a> . and agin i used the <b>Wire.h</b> library and the compailation was succeed .and the new board manager will gave us more control in our <b>ATtiny Board</b>.</p>
-                            <img src="images/week14/0012.png" height="400"> <img src="images/week14/0013.png" height="400">
+                            <center><img src="images/week14/0012.png" height="400"> <img src="images/week14/0013.png" height="400"></center>
                             <p>first one is the new <b>ATtiny Core</b> and second one is the <b>ATtiny</b> board definition ,and we can see we will get more control in microcontroller by using the <b>ATtinyCore</b> board definition. </p>
                             
                             <p><b>Code</b></p>
@@ -210,32 +210,32 @@
                             </ul>
                             
                             <p><b>Demo Video</b></p>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/7kXB7ZIKUk8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/7kXB7ZIKUk8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
                             <p>Now we can design new <b>Master</b> and <b>Slave</b> board.</p>
                             <hr>
                             <h3>PCB Design </h3>
                             <p><b>Master</b></p>
                             <p>For the <b>I2C</b> network we need to Design Two boards . one is <b>Master Board</b> and another one is <b>Slave</b> board.first i designed Master board with <b>ATtiny44</b> .</p>
-                            <img src="images/week14/0014.png" >
+                            <center><img src="images/week14/0014.png" ></center>
                             <p> here i used <b>ATtiny44</b> with <b>20 Mhz</b> resonator. and also added <b>10 k</b> ohm resistor between <b>MOSI (SDA)</b> and <b>SCK</b>.</p>
-                            <img src="images/week14/0016.png">
+                            <center><img src="images/week14/0016.png"></center>
                             <p>This is my board layout .after that i exported the image for milling and cutting. </p>
-                            <img src="images/week14/m_top.png" height="400"> <img src="images/week14/m_cut.png" height="400"><br><br>
+                            <center><img src="images/week14/m_top.png" height="400"> <img src="images/week14/m_cut.png" height="400"></center><br><br>
                             
                             <p><b>Slave</b></p>
                             <p>For the <b>I2C</b> slave i used <b>ATtiny44</b> with <b>20 mhz</b> resonator and two <b>LED</b>'s. i milled two slaves with same config.</p>
-                            <img src="images/week14/0014.png">
+                            <center><img src="images/week14/0014.png"></center>
                             <p>In the slave i also added <b>10 k </b> pull-up resistor for <b>MOSI (SDA)</b> and <b>SCK</b>.</p>
-                            <img src="images/week14/0015.png" height="500">
+                            <center><img src="images/week14/0015.png" height="500"></center>
                             <p>This is my board layout .after that i exported the image for milling and cutting. </p>
-                            <img src="images/week14/s_top.png" height="400"> <img src="images/week14/s_cut.png" height="400">
+                            <center><img src="images/week14/s_top.png" height="400"> <img src="images/week14/s_cut.png" height="400"></center>
                             
                             <hr>
                             
                             <h3>Milling and Soldering</h3>
                             <p><b>Hero Shot</b></p>
-                            <img src="images/week14/0018.jpg" width="100%">
+                            <center><img src="images/week14/0018.jpg" width="100%"></center>
                             
                             <hr>
                             <h3>Progarmming</h3>
@@ -400,20 +400,20 @@
                         
                           <h4>Slave master Connection</h4>
                         <p>I used <b>2x2</b> Pin header with Rainbow cable to make a communication Bus.</p>
-                        <img src="images/week14/0019.jpg" width="100%">
+                        <center><img src="images/week14/0019.jpg" width="100%"></center>
                         <hr>
                         <h4>Demo</h4>
                         <p>First i uploaded code for turn on all the led in slave.</p>
-                        <img src="images/week14/0020.jpg" width="100%">
+                        <center><img src="images/week14/0020.jpg" width="100%"></center>
                         
                         <p><b>Video</b></p>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/5A-WyP3OZh8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <Center><iframe width="560" height="315" src="https://www.youtube.com/embed/5A-WyP3OZh8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></Center>
                         <hr>
                         <h4>Problems</h4>
                         <p>I uploaded my code to slave and master board and it's work perfectly but after i changed one of my slave code and uploaded  it throwed a error.</p>
-                        <img src="images/week14/0021.png" width="100%">
+                        <center><img src="images/week14/0021.png" width="100%"></center>
                         <p>I try to <b>override</b> using <b>-F</b>. </p>
-                        <img src="images/week14/0022.png" width="100%">
+                        <center><img src="images/week14/0022.png" width="100%"></center>
                         <p>now we know problem , it was the <b>Invalid Device Signature</b> . i googled about the error and did't not found any solution and in <b>AVR Freaks </b> some one have the same problem ,he solved by just heating the ATtiny44 and ISP pin , so it's due to <b>loosed/cold solder</b> ,so i heated the solder on the ATTiny and ISP Pin header.Now problem solved . </p>
                         
                         <hr>
@@ -422,30 +422,7 @@
                         <li><a href="resource/week14/Master.zip">I2C Master Design File </a></li>
                         <li><a href="resource/week14/Slave.zip">I2C Slave Design File   </a></li></ul>
                         
-                        
-                        
-                        
-                            
-                            
-                            
-
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-
-
-
-
+    
 
                             
        
@@ -464,7 +441,7 @@
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -473,7 +450,7 @@
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>

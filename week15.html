@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-		<title>Mechanical Design</title>
+		<title>Mechanical Design & Machine Design</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -21,7 +21,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"></span><span class="title">Mechanical Design</span>
+									<span class="symbol"></span><span class="title">Mechanical Design & Machine Design</span>
                                     
 								</a>
                             
@@ -53,20 +53,73 @@
 						<div class="inner">
 							<ul><li>design a machine that includes mechanism+actuation+automation.</li>
                             <li> build the mechanical parts and operate it manually.</li></ul>
+                            <li>actuate and automate our machine.</li>
                             <hr>
                             <h3>Introduction</h3>
                             <p>This week's assignment is a team work. and we uploded our overall team documentation in our <b><a href="http://archive.fabacademy.org/2018/labs/fablabkochi/MachineDesign.html">FabLab Kochi</a></b> page. here i documenting my individual contribution .Actually <b>Machine Week</b> is Splited two part ,One is <b>Mechanical Design</b> and <b>machine design</b>. in the Mechanical Design week we bulilded our Machine and operate it manually.</p>
-                            <p>In Mechanical Design week my job is to cut the material based on the design and <b>assembling</b> the Machine Parts, and i am not the only who did this all are my friends invloved with the these process . </p>
+                            <center><img src="images/week15/002.png" width="50%"></center>
+                            <p>In Mechanical Design week my job is to cut the material based on the design and <b>assembling</b> the Machine Parts, and i am not the only who did this all are my friends invloved with the these process .<br></p>
                             
                             <h3>Machine Design</h3>
-                            <img src="images/week15/001.png" width="100%">
+                            <center><img src="images/week15/001.png" width="100%"></center>
                             <p>It's designed by <b>Jogin Francis</b> using <b>Fusion360</b> I helped Jogin measure the rack size and box that  we used in fablab . first we laser cuted the Prototype of <b>linear rail</b> in small size. </p>
                             
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/9I4-PpMFaq0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/9I4-PpMFaq0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
                             
                             <p>Now we can confirm the big part </p>
                             
                             <p>Next we did the <b>Shopbot</b> Machining</p>
+                            
+                            
+                            <hr>
+                            
+                            <p>In <b>Machine Design</b> week my job is to <b>Design PCB</b> of main board and also develop <b>Firmware</b>.we choosed <b>NodeMCU</b> wifi Devlopment board as the main brain of our project , it's embedded with wifi so can simply contorl and monitor our machine remotly .and we used <b>polulu</b> stepper motor contoller.</p>
+                            
+                            <h3>PCB Design</h3>
+                            <p>First all members come togther and we discussed about the hardware and it's feature , finally come with <b>ESP8266</b> SOC(System On a Chip) , and it's not a good idea to use the barebone SOC so we picked the <b>NodeMCU</b> board it's a <b>ESP8266-12E</b> development kit <br>
+                            <center><img src="images/week16/001.jpg" height="500"></center><br>
+                            we can also flash Arduino bootloader in order to compatable with <b>Arduino IDE</b> and progarmmes. </p>
+                            <p>Started to dedsign in eagle , before that we tested each componets independely to enusre that will work as we expected . first i designed a motor driver based on the <b>A4953</b> . </p>
+                            <center><img src="images/week16/003.png" height="500"></center>
+                            <center><img src="images/week16/004.jpg" height="500"></center>
+                            <p>It's not worked as we expectd(some times it's stucked ) , so we choosed <b>L293D</b>, it's worked great so .</p>
+                            <center><img src="images/week16/005.jpg" height="600"></center>
+                            
+                            <p>So after that we tested the stepper motor and other parts , then i staretd design main board . </p>
+                            <center><img src="images/week16/002.png" height="500"></center><br><br>
+                            <p><b>PCB Milling and Soldering</b></p>
+                            <center><img src="images/week16/006.jpg" height="400"></center>
+                            <center><img src="images/week16/007.jpg" height="400"></center><br><br>
+                            
+                            <p>One of the biggest problem is we can't solder it very well,  because in design i did't <b>mirrored</b> throgh-hole componets ,so it become a mess . i re-designed it fully. </p>
+                            <center><img src="images/week16/008.png" height="500"></center><br><br>
+                            
+                            <p>in this new design i can reduce the size of the pdf, it's actually a plus point.</p>
+                            <center><img src="images/week16/009.jpg" height="500"></center><br><br>
+                            <p>I used Female pin's for attching <b>Polulu Stepper Driver</b></p>
+                            <center><img src="images/week16/0010.jpg" height="400"></center>
+                            <center><img src="images/week16/0011.jpg" height="400"></center>
+                            <hr>
+                            <h3>Demo Video Samples</h3>
+                            <p><b>=> Endeffctor prototype</b></p>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/ehdQDdu_5Ac" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
+                            <br><br>
+                            <p><b>=> Vertical Rail model.</b></p>
+                            <center><iframe width="560" height="315" src="https://www.youtube.com/embed/_WuQ8YoTYxc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
+                            
+                            
+                            <p>This is my contribution to <b>Machine Week</b> .</p>
+                            <hr>
+                            <h3>Group Assignment Page</h3>
+                            <p><b><a href="http://fab.academany.org/2018/labs/fablabkochi/MachineDesign.html">Click here to view group Assignmnet</a></b></p>
+                            <hr>
+                            <h3>Resource Files</h3>
+                            <ul>
+                            <li><a href="resource/week16&15/Mainboard.zip">Main Control Board Eagle File</a></li>
+                            <li><a href="resource/week16&15/DC%20motor%20Driver(%20A4953).zip">A4953 Motor Driver Eagle File</a></li></ul>
+                            
+                            
+                            
                             
                             
                             
@@ -77,7 +130,7 @@
        
                             
                         <br><br><br>  
-                        <center><h3><a href="week14.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week16.html" align="right">Next&gt;  </a></h3></center>
+                        <center><h3><a href="week14.html" align="left"> &lt;Prev  </a> &nbsp &nbsp &nbsp <a href="week17.html" align="right">Next&gt;  </a></h3></center>
 						</div>
 					</div>
                 
@@ -90,7 +143,7 @@
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="https://twitter.com/salman_nbr" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://twitter.com/0xsalfar" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="https://www.facebook.com/farissalmannbr" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/sal_far_/" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://www.hackster.io/salmanfarisvp" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
@@ -99,7 +152,7 @@
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>This work by Salman Faris is licensed under a <a herf="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
+								<li>This work by Salman Faris is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></li>
 							</ul>
 						</div>
 					</footer>
